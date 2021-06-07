@@ -9,8 +9,15 @@ class ComicController extends Controller
 {
     public function websiteList()
     {
-        $comics = Comic::all();
+        $comics = Comic::with('cover', 'brand')->get();
+
 
         return view('website.pages.comics.list', compact('comics'));
+    }
+
+    public function websiteDetails(Comic $comic)
+    {
+
+        return view('website.pages.comics.details', compact('comic'));
     }
 }

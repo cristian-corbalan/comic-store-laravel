@@ -466,6 +466,215 @@ article.comic-item {
     }
 }
 
+// TODO Comics / Details
+
+#main-comic-details {
+    padding-bottom: 1rem;
+}
+
+// TODO Comics / Section / Info
+
+#comic-info {
+    padding: 1rem 1rem 1.5rem;
+
+    .breadcrumb {
+        white-space: normal;
+
+        li.is-active {
+            a {
+                color: $black-gray;
+            }
+        }
+
+        a {
+            font-size: .875rem;
+            color: $blue;
+        }
+    }
+
+    // Info / Cover
+
+    > div:nth-child(2) {
+        max-width: 336px;
+        margin: auto auto 2rem;
+
+        img {
+            border-radius: 10px;
+        }
+    }
+
+    // Info / Name - Brand - Price - Discount - Authors - Artists - Publication date - Date
+
+    > div:nth-child(3) {
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: .5em;
+        }
+
+        h1 + p {
+            text-align: center;
+            color: rgba($black-gray, .6);
+            margin-bottom: 1.25rem;
+        }
+
+        ul {
+            border: 1px solid $brown;
+            background: $white;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+
+            li {
+                padding: .5rem;
+                border-bottom: 1px solid $brown;
+
+                &:last-of-type {
+                    border-bottom: none;
+                }
+
+                .genres-tag {
+                    background: $blue;
+                    color: $white;
+                    padding: .4rem;
+                    border-radius: 5px;
+                    display: inline-block;
+                    margin: .2rem;
+                    font-size: .9rem;
+                }
+            }
+        }
+
+        // Info / Price - Discount - Buy Button
+
+        > div:last-of-type {
+            width: 100%;
+            max-width: 352px;
+            margin: auto;
+
+            .price {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1.5rem;
+
+                .price-only {
+                    text-align: center;
+                    width: 100%;
+                }
+
+                // Price
+                > div {
+                    p:first-of-type {
+                        text-decoration: line-through;
+                        color: rgba($brown-dark, .6);
+                        margin-bottom: .5rem;
+                    }
+
+                    p.ComicPrice {
+                        font-size: 1.25rem;
+                        font-weight: bold;
+                        color: $brown-dark;
+                        text-decoration: none;
+                        margin-bottom: 0;
+                    }
+                }
+
+                // Discount
+
+                > div + p {
+                    padding: .5rem;
+                    border: 1px solid $blue;
+                    color: $blue;
+                    font-size: 1.1rem;
+                    border-radius: 5px;
+                }
+            }
+
+            button {
+                width: 100%;
+                max-width: 352px;
+                background: $blue-dark;
+                color: $white;
+                border: none;
+                transition: 300ms;
+                display: block;
+                margin: auto;
+
+                &:hover {
+                    background: $blue;
+                }
+
+            }
+        }
+    }
+
+}
+
+// TODO Comics / Section / Tabs
+
+#comic-tabs {
+    padding: 0;
+
+    > div {
+        background: $white;
+        border-radius: 10px;
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    // Tabs / Btn
+
+    .container-tabs-btn {
+        border-bottom: 1px solid $black-gray;
+
+        li {
+            &.is-active a {
+                background: $black-gray;
+                color: $white;
+            }
+
+            a {
+                font-weight: bold;
+                color: rgba($black-gray, .6);
+                border: none;
+            }
+        }
+    }
+
+
+    // Tab / Container
+    .section {
+        border-top: 8px solid $black-gray;
+
+        br {
+            margin-bottom: 1rem;
+        }
+
+        // Tab / Container / Characters
+        #characters {
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+
+                li {
+                    margin: .3rem;
+
+                    > div {
+                        max-width: 80px;
+                        max-height: 80px;
+
+                        img {
+                            border-radius: 10px;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+
 
 // TODO Media screen 560px
 
@@ -522,7 +731,7 @@ article.comic-item {
 // TODO Media screen 768px
 
 @media screen and (min-width: 768px) {
-    // TODO Comic / List
+    // TODO Comic / Main List
 
     #main-comic-list {
         display: flex;
@@ -561,6 +770,72 @@ article.comic-item {
                 display: none;
             }
         }
+    }
+
+    // TODO Comics / Section / Info
+    #comic-info {
+        display: flex;
+        flex-wrap: wrap;
+
+        .breadcrumb {
+            width: 100%;
+        }
+
+        > div:nth-child(2) {
+            line-height: 0;
+            margin-right: 1rem;
+            margin-left: 0;
+            margin-bottom: 0;
+        }
+
+        > div:nth-child(3) {
+            max-width: 352px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            ul {
+                background: none;
+                border: none;
+
+                li {
+                    border-bottom: none;
+
+                    .is-block {
+                        display: inline;
+                    }
+                }
+            }
+
+            > div {
+                h1, h1 + p {
+                    text-align: left;
+                }
+
+                &:last-of-type {
+                    margin-bottom: 0;
+
+                    button {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+
+
+    // TODO Comics / Section / Tabs
+
+    #comic-tabs {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #comic-info {
+        padding-right: 0;
+        padding-left: 0;
     }
 }
 

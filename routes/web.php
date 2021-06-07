@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('/comics', [ComicController::class, 'websiteList'])->name('comics.list');
+Route::get('/comics/{comic}', [ComicController::class, 'websiteDetails'])->name('comics.details');
