@@ -6,11 +6,16 @@ return [
             'routeName' => 'home',
             'text' => 'Inicio'
         ],
+        [
+            'routeName' => 'comics.list',
+            'text' => 'Comics'
+        ],
     ],
     'homeBannerImages' => [
         [
             'src' => 'banner_1.jpg',
             'alt' => 'Increíbles descuentos hasta fin de semana',
+            'routeName' => 'comics.list',
         ],
 //        [
 //            'src' => 'banner_2.jpg',

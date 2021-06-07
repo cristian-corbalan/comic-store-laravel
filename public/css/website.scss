@@ -9,6 +9,8 @@ $blue-dark: #1066BC;
 $yellow: #FED049;
 $bg-main: #F8F7F3;
 
+$filter-width: 280px;
+
 * {
     font-family: 'Montserrat', sans-serif;
     color: $black-gray;
@@ -23,7 +25,7 @@ $bg-main: #F8F7F3;
     //background-height: ;
 }
 
-// Classes
+// TODO Classes
 
 .bold {
     font-weight: bold;
@@ -35,6 +37,17 @@ $bg-main: #F8F7F3;
     span {
         font-size: 1rem;
     }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 // TODO Header
@@ -60,7 +73,7 @@ header {
     }
 
 
-    // TODO Header / Top
+    // Header / Top
     > div {
         display: flex;
         justify-content: space-between;
@@ -88,8 +101,6 @@ header {
             }
         }
     }
-
-    // TODO Header / Nav
 
     nav {
         position: fixed;
@@ -170,8 +181,8 @@ footer {
 
     }
 
-    .contacto{
-        li{
+    .contacto {
+        li {
             margin-bottom: 1rem;
         }
     }
@@ -180,9 +191,11 @@ footer {
     .social-networks {
         display: flex;
         flex-wrap: wrap;
-        li{
+
+        li {
             margin: 0 1rem;
-            &:first-of-type{
+
+            &:first-of-type {
                 margin-left: 0;
             }
         }
@@ -216,7 +229,6 @@ main {
     }
 }
 
-
 // TODO Home / Banner
 
 #banner {
@@ -232,100 +244,6 @@ main {
 #popular-products {
     ul {
         margin: auto;
-        display: flex;
-        overflow-x: auto;
-
-        li {
-            margin-right: 1rem;
-
-            &:last-of-type {
-                margin-right: 0;
-            }
-        }
-    }
-}
-
-// TODO Comic / Article
-
-.comic-item {
-    background: $white;
-    padding: 1rem;
-    border-radius: 10px;
-    border: 0.01rem solid rgba($brown, .4);
-
-
-    .img-container {
-        //overflow:  hidden;
-        margin-bottom: .8rem;
-
-
-        img {
-            //min-width: 2.08rem;
-            max-height: 280px;
-            border-radius: 10px;
-        }
-    }
-
-    // Brand and Title
-
-    > div:nth-child(2) {
-        margin-bottom: 1rem;
-
-        p {
-            &:first-of-type {
-                font-size: 0.875rem;
-                color: rgba($black-gray, .6);
-                margin-bottom: .5rem;
-            }
-
-            &:last-of-type {
-                font-weight: bold;
-                height: 3.2rem;
-                min-height: 3.2rem;
-                width: 220px;
-                overflow: hidden;
-
-                &:hover {
-                    overflow: visible;
-                    height: auto;
-                }
-            }
-        }
-    }
-
-    // Price and buy button
-
-    > div:last-of-type {
-        //background: #000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        p {
-            font-weight: bold;
-            color: $brown-dark;
-        }
-
-        button {
-            color: $blue-dark;
-            background: none;
-            border: 0.01rem solid $blue-dark;
-            margin-left: .4rem;
-
-            span {
-                color: $blue-dark;
-                margin-left: .5rem;
-            }
-
-            &:active, &:hover {
-                background: $blue-dark;
-                color: $white;
-
-                span {
-                    color: $white;
-                }
-            }
-        }
     }
 }
 
@@ -367,6 +285,188 @@ main {
     }
 }
 
+// TODO General / Comic / List
+
+ul.comic-list {
+    display: flex;
+
+    li {
+        margin-right: 1rem;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
+
+// TODO General / Comic / Article
+
+article.comic-item {
+    background: $white;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 0.01rem solid rgba($brown, .4);
+
+
+    .img-container {
+        margin-bottom: .8rem;
+
+
+        img {
+            max-height: 280px;
+            border-radius: 10px;
+        }
+    }
+
+    // Brand and Title
+
+    > div:nth-child(2) {
+        margin-bottom: 1rem;
+
+        p {
+            &:first-of-type {
+                font-size: 0.875rem;
+                color: rgba($black-gray, .6);
+                margin-bottom: .5rem;
+            }
+
+            &:last-of-type {
+                font-weight: bold;
+                height: 3.2rem;
+                min-height: 3.2rem;
+                width: 220px;
+                overflow: hidden;
+
+                &:hover {
+                    overflow: visible;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    // Price and buy button
+
+    > div:last-of-type {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            font-weight: bold;
+            color: $brown-dark;
+        }
+
+        button {
+            color: $blue-dark;
+            background: none;
+            border: 0.01rem solid $blue-dark;
+            margin-left: .4rem;
+
+            span {
+                color: $blue-dark;
+                margin-left: .5rem;
+            }
+
+            &:active, &:hover {
+                background: $blue-dark;
+                color: $white;
+
+                span {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+// TODO Comics / Filters
+
+#filters {
+    .modal-content {
+        background: $white;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 10px;
+
+        p:last-of-type {
+            color: rgba($black-gray, .6);
+        }
+    }
+}
+
+// TODO Comics / List
+
+#comics-list {
+
+    header {
+        background: none;
+        display: flex;
+        justify-content: end;
+        margin-bottom: 1rem;
+
+        button {
+            span {
+                margin-left: .5rem;
+            }
+        }
+    }
+
+    ul.comic-list {
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        li {
+            margin: 0 .2rem 1rem .2rem;
+
+            &:first-of-type {
+                margin-left: 0;
+            }
+
+            article {
+                padding: .5rem;
+
+                .img-container {
+                    margin-bottom: .8rem;
+
+                    img {
+                        max-height: none;
+                        max-width: 120px;
+                    }
+                }
+
+                // Brand and Title
+
+                > div:nth-child(2) {
+                    margin-bottom: 1rem;
+
+                    p {
+                        &:last-of-type {
+                            width: 120px;
+                        }
+                    }
+                }
+
+                // Price and buy button
+
+                > div:last-of-type {
+                    flex-direction: column;
+
+                    p {
+                        margin-bottom: .5rem;
+                    }
+
+                    button {
+                        width: 100%;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 // TODO Media screen 560px
 
 @media screen and (min-width: 560px) {
@@ -380,8 +480,6 @@ main {
         .menu-sh-btn {
             display: none;
         }
-
-        // TODO Header / Nav
 
         nav {
             position: static;
@@ -418,12 +516,70 @@ main {
             }
         }
     }
+
 }
 
+// TODO Media screen 768px
+
+@media screen and (min-width: 768px) {
+    // TODO Comic / List
+
+    #main-comic-list {
+        display: flex;
+    }
+
+    // TODO Comics / Filters
+
+    #filters {
+        position: static;
+        display: block;
+        background: $white;
+        min-width: $filter-width;
+        max-width: $filter-width;
+        padding-top: 2rem;
+
+        border-right: 1px solid rgba($brown-dark, .5);
+
+        .filter-sh-btn {
+            display: none;
+        }
+
+        .modal-content {
+            text-align: left;
+            width: 100%;
+            padding: 0;
+        }
+    }
+
+    // TODO Comics / List
+
+    #comics-list {
+        width: calc(100% - 280px);
+
+        header {
+            .filter-sh-btn {
+                display: none;
+            }
+        }
+    }
+}
+
+// TODO Media screen 1366px
+
 @media screen and (min-width: 1366px) {
+    // TODO Home / Popular products
+
     #popular-products {
         ul {
             justify-content: center;
+        }
+    }
+
+    // TODO Comics / List
+
+    #comics-list {
+        ul.comic-list {
+            justify-content: space-around;
         }
     }
 }

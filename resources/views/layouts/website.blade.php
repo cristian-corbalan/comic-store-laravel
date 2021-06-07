@@ -9,8 +9,8 @@
     {{--Icons--}}
     <link rel="stylesheet" href="{{url('css/icomoon.css')}}">
 
-    <link rel="stylesheet" href="<?=url('css/website.css')?>">
     <link rel="stylesheet" href="<?=url('css/bulma.min.css')?>">
+    <link rel="stylesheet" href="<?=url('css/website.css')?>">
 </head>
 <body>
 <header>

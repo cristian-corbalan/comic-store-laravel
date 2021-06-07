@@ -8,9 +8,11 @@
         <section id="banner">
             <div>
                 @foreach(config('arrays.homeBannerImages') as $banner)
+                    <a href="{{route($banner["routeName"])}}">
                     <img
                         src="{{url('img/banners/'.$banner["src"])}}"
                         alt="{{$banner['alt']}}"/>
+                    </a>
                 @endforeach
             </div>
         </section>
@@ -19,7 +21,7 @@
         {{--NOTE: transform to product carousel--}}
         <section id="popular-products">
             <p class="title is-5">Comics populares</p>
-            <ul>
+            <ul class="comic-list">
                 @foreach($comics as $comic)
                     <li>
                         <x-comics.comic-product-item :comic="$comic"></x-comics.comic-product-item>
