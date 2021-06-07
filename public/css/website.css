@@ -1,0 +1,307 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+  color: #505050;
+}
+
+#logo, .logo {
+  background: url("../img/logo/logo_white.png") no-repeat;
+  width: 90px;
+  height: 50px;
+  font-size: 0;
+  display: block;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.icon-only {
+  font-size: 0;
+}
+.icon-only span {
+  font-size: 1rem;
+}
+
+.menu-sh-btn {
+  display: block;
+}
+.menu-sh-btn:hover {
+  color: #FFFFFF;
+}
+.menu-sh-btn span {
+  font-size: 1.4rem;
+  color: #FFFFFF;
+}
+
+header {
+  background: #505050;
+}
+header, header a {
+  color: #FFFFFF;
+}
+header > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+}
+header > div .button {
+  background: none;
+  color: #FFFFFF;
+  transition: 300ms;
+}
+header > div .button:hover {
+  background: #FFFFFF;
+  color: #1066BC;
+}
+header > div > div {
+  display: flex;
+  align-items: center;
+}
+header > div > div > a {
+  display: block;
+  margin-right: 0.8rem;
+}
+header nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #505050;
+  padding: 1.2rem 1rem;
+  z-index: 2;
+  transform: translateX(-110%);
+  transition: all 0.6s ease-in-out;
+}
+header nav.active {
+  transform: translateX(0);
+}
+header nav > .menu-sh-btn {
+  position: fixed;
+  right: 1rem;
+  top: 1.8rem;
+}
+header nav ul {
+  margin-top: 1.5rem;
+}
+header nav ul li a {
+  display: block;
+  padding: 0.6rem 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+header nav ul li a.active {
+  color: #FED049;
+}
+
+footer {
+  background-color: #FFFFFF;
+  padding: 1.6em 0 1rem 0;
+}
+footer > div {
+  padding: 0 1rem;
+}
+footer > div:first-of-type {
+  margin: auto;
+  border-bottom: 0.01rem solid rgba(80, 80, 80, 0.2);
+}
+footer > div:last-of-type p {
+  font-size: 0.8rem;
+  color: rgba(80, 80, 80, 0.6);
+}
+footer ul.images {
+  display: flex;
+  flex-wrap: wrap;
+}
+footer ul.images li {
+  margin: 0.3rem;
+}
+footer ul.images li img {
+  max-width: 48px;
+}
+footer .contacto li {
+  margin-bottom: 1rem;
+}
+footer .social-networks {
+  display: flex;
+  flex-wrap: wrap;
+}
+footer .social-networks li {
+  margin: 0 1rem;
+}
+footer .social-networks li:first-of-type {
+  margin-left: 0;
+}
+footer .social-networks a {
+  font-size: 0;
+  display: block;
+  padding: 0.8rem;
+  background: #1066BC;
+  transition: 300ms;
+  border-radius: 100%;
+}
+footer .social-networks a:hover {
+  background: #4A6AFF;
+}
+footer .social-networks a span {
+  color: #FFFFFF;
+  font-size: 1.8rem;
+}
+
+main {
+  background: #F8F7F3;
+}
+main section {
+  padding: 1rem;
+}
+
+#banner > div {
+  overflow: hidden;
+  border-radius: 15px;
+  line-height: 0;
+}
+
+#popular-products ul {
+  margin: auto;
+  display: flex;
+  overflow-x: auto;
+}
+#popular-products ul li {
+  margin-right: 1rem;
+}
+#popular-products ul li:last-of-type {
+  margin-right: 0;
+}
+
+.comic-item {
+  background: #FFFFFF;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 0.01rem solid rgba(165, 142, 127, 0.4);
+}
+.comic-item .img-container {
+  margin-bottom: 0.8rem;
+}
+.comic-item .img-container img {
+  max-height: 280px;
+  border-radius: 10px;
+}
+.comic-item > div:nth-child(2) {
+  margin-bottom: 1rem;
+}
+.comic-item > div:nth-child(2) p:first-of-type {
+  font-size: 0.875rem;
+  color: rgba(80, 80, 80, 0.6);
+  margin-bottom: 0.5rem;
+}
+.comic-item > div:nth-child(2) p:last-of-type {
+  font-weight: bold;
+  height: 3.2rem;
+  min-height: 3.2rem;
+  width: 220px;
+  overflow: hidden;
+}
+.comic-item > div:nth-child(2) p:last-of-type:hover {
+  overflow: visible;
+  height: auto;
+}
+.comic-item > div:last-of-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.comic-item > div:last-of-type p {
+  font-weight: bold;
+  color: #6C584C;
+}
+.comic-item > div:last-of-type button {
+  color: #1066BC;
+  background: none;
+  border: 0.01rem solid #1066BC;
+  margin-left: 0.4rem;
+}
+.comic-item > div:last-of-type button span {
+  color: #1066BC;
+  margin-left: 0.5rem;
+}
+.comic-item > div:last-of-type button:active, .comic-item > div:last-of-type button:hover {
+  background: #1066BC;
+  color: #FFFFFF;
+}
+.comic-item > div:last-of-type button:active span, .comic-item > div:last-of-type button:hover span {
+  color: #FFFFFF;
+}
+
+#pills {
+  padding: 4rem 1rem;
+  background: #1066BC;
+  color: #FFFFFF;
+  text-align: center;
+}
+#pills li p {
+  margin-bottom: 1rem;
+}
+#pills li p[class^=icon] {
+  padding: 0.8rem;
+  border: 4px solid #FFFFFF;
+  display: inline-block;
+  border-radius: 100%;
+}
+#pills li p[class^=icon] span {
+  font-size: 4rem;
+  color: #FFFFFF;
+}
+#pills li p:nth-child(2) {
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+#pills li p:last-of-type {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8rem;
+}
+
+@media screen and (min-width: 560px) {
+  header > div {
+    padding: 0.8rem 2rem;
+  }
+  header .menu-sh-btn {
+    display: none;
+  }
+  header nav {
+    position: static;
+    height: auto;
+    transform: translateX(0);
+    padding: 0.5rem 2rem 1rem 2rem;
+  }
+  header nav .logo {
+    display: none;
+  }
+  header nav ul {
+    display: flex;
+    margin: 0;
+  }
+  header nav ul li {
+    margin-right: 1rem;
+  }
+  header nav ul li:last-of-type {
+    margin-right: 0;
+  }
+  header nav ul li a {
+    padding: 0.2rem;
+    font-weight: 400;
+    transition: 300ms;
+  }
+  header nav ul li a:hover {
+    color: #FED049;
+  }
+}
+@media screen and (min-width: 1366px) {
+  #popular-products ul {
+    justify-content: center;
+  }
+}
+
+/*# sourceMappingURL=website.css.map */

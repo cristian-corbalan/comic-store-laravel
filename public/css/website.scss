@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+$black-gray: #505050;
+$white: #FFFFFF;
+$brown: #A58E7F;
+$brown-dark: #6C584C;
+$blue: #4A6AFF;
+$blue-dark: #1066BC;
+$yellow: #FED049;
+$bg-main: #F8F7F3;
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: $black-gray;
+}
+
+#logo, .logo {
+    background: url('../img/logo/logo_white.png') no-repeat;
+    width: 90px;
+    height: 50px;
+    font-size: 0;
+    display: block;
+    //background-height: ;
+}
+
+// Classes
+
+.bold {
+    font-weight: bold;
+}
+
+.icon-only {
+    font-size: 0;
+
+    span {
+        font-size: 1rem;
+    }
+}
+
+// TODO Header
+
+.menu-sh-btn {
+    display: block;
+
+    &:hover {
+        color: $white;
+    }
+
+    span {
+        font-size: 1.4rem;
+        color: $white;
+    }
+}
+
+header {
+    background: $black-gray;
+
+    &, a {
+        color: $white;
+    }
+
+
+    // TODO Header / Top
+    > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: .8rem 1rem;
+
+        .button {
+            background: none;
+            color: $white;
+            transition: 300ms;
+
+            &:hover {
+                background: $white;
+                color: $blue-dark;
+            }
+        }
+
+        > div {
+            display: flex;
+            align-items: center;
+
+            > a {
+                display: block;
+                margin-right: .8rem;
+            }
+        }
+    }
+
+    // TODO Header / Nav
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: $black-gray;
+        padding: 1.2rem 1rem;
+        z-index: 2;
+        transform: translateX(-110%);
+        transition: all .6s ease-in-out;
+
+        &.active {
+            transform: translateX(0);
+        }
+
+        > .menu-sh-btn {
+            position: fixed;
+            right: 1rem;
+            top: 1.8rem;
+        }
+
+        ul {
+            margin-top: 1.5rem;
+
+            li {
+                a {
+                    display: block;
+                    padding: .6rem 1rem;
+                    font-size: 1.1rem;
+                    font-weight: bold;
+
+                    &.active {
+                        color: $yellow;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// TODO Footer
+
+footer {
+    background-color: $white;
+    padding: 1.6em 0 1rem 0;
+
+    > div {
+        padding: 0 1rem;
+
+        &:first-of-type {
+            margin: auto;
+            border-bottom: 0.01rem solid rgba($black-gray, .2);
+        }
+
+        &:last-of-type {
+            p {
+                font-size: .8rem;
+                color: rgba($black-gray, .6);
+            }
+        }
+
+    }
+
+    ul.images {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            margin: .3rem;
+
+            img {
+                max-width: 48px;
+            }
+
+        }
+
+    }
+
+    .contacto{
+        li{
+            margin-bottom: 1rem;
+        }
+    }
+
+
+    .social-networks {
+        display: flex;
+        flex-wrap: wrap;
+        li{
+            margin: 0 1rem;
+            &:first-of-type{
+                margin-left: 0;
+            }
+        }
+
+        a {
+            font-size: 0;
+            display: block;
+            padding: .8rem;
+            background: $blue-dark;
+            transition: 300ms;
+            border-radius: 100%;
+
+            &:hover {
+                background: $blue;
+            }
+
+            span {
+                color: $white;
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+
+// TODO Main and Section default
+main {
+    background: $bg-main;
+
+    section {
+        padding: 1rem;
+    }
+}
+
+
+// TODO Home / Banner
+
+#banner {
+    > div {
+        overflow: hidden;
+        border-radius: 15px;
+        line-height: 0;
+    }
+}
+
+// TODO Home / Popular products
+
+#popular-products {
+    ul {
+        margin: auto;
+        display: flex;
+        overflow-x: auto;
+
+        li {
+            margin-right: 1rem;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+// TODO Comic / Article
+
+.comic-item {
+    background: $white;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 0.01rem solid rgba($brown, .4);
+
+
+    .img-container {
+        //overflow:  hidden;
+        margin-bottom: .8rem;
+
+
+        img {
+            //min-width: 2.08rem;
+            max-height: 280px;
+            border-radius: 10px;
+        }
+    }
+
+    // Brand and Title
+
+    > div:nth-child(2) {
+        margin-bottom: 1rem;
+
+        p {
+            &:first-of-type {
+                font-size: 0.875rem;
+                color: rgba($black-gray, .6);
+                margin-bottom: .5rem;
+            }
+
+            &:last-of-type {
+                font-weight: bold;
+                height: 3.2rem;
+                min-height: 3.2rem;
+                width: 220px;
+                overflow: hidden;
+
+                &:hover {
+                    overflow: visible;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    // Price and buy button
+
+    > div:last-of-type {
+        //background: #000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            font-weight: bold;
+            color: $brown-dark;
+        }
+
+        button {
+            color: $blue-dark;
+            background: none;
+            border: 0.01rem solid $blue-dark;
+            margin-left: .4rem;
+
+            span {
+                color: $blue-dark;
+                margin-left: .5rem;
+            }
+
+            &:active, &:hover {
+                background: $blue-dark;
+                color: $white;
+
+                span {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+// TODO Home / Pills
+
+#pills {
+    padding: 4rem 1rem;
+    background: $blue-dark;
+    color: $white;
+    text-align: center;
+
+    li {
+        p {
+            margin-bottom: 1rem;
+        }
+
+        p[class^="icon"] {
+            padding: .8rem;
+            border: 4px solid $white;
+            display: inline-block;
+            border-radius: 100%;
+
+            span {
+                font-size: 4rem;
+                color: $white;
+            }
+        }
+
+        p:nth-child(2) {
+            color: $white;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        p:last-of-type {
+            color: rgba($white, .8);
+            line-height: 1.8rem;
+        }
+    }
+}
+
+// TODO Media screen 560px
+
+@media screen and (min-width: 560px) {
+    // TODO Header
+
+    header {
+        > div {
+            padding: .8rem 2rem;
+        }
+
+        .menu-sh-btn {
+            display: none;
+        }
+
+        // TODO Header / Nav
+
+        nav {
+            position: static;
+            height: auto;
+            transform: translateX(0);
+            padding: .5rem 2rem 1rem 2rem;
+
+            .logo {
+                display: none;
+            }
+
+            ul {
+                display: flex;
+                margin: 0;
+
+                li {
+                    margin-right: 1rem;
+
+                    &:last-of-type {
+                        margin-right: 0;
+
+                    }
+
+                    a {
+                        padding: .2rem;
+                        font-weight: 400;
+                        transition: 300ms;
+
+                        &:hover {
+                            color: $yellow;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1366px) {
+    #popular-products {
+        ul {
+            justify-content: center;
+        }
+    }
+}
