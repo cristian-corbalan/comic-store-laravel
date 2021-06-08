@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+$black: #333333;
+$black-gray: #505050;
+$white: #FFFFFF;
+$brown: #A58E7F;
+$brown-dark: #6C584C;
+$blue: #4A6AFF;
+$blue-dark: #1066BC;
+$yellow: #FED049;
+$bg-main: #F8F7F3;
+
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-full-hd: 1408px;
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#logo, .logo {
+    background: url('../img/logo/logo_white.png') no-repeat;
+    width: 90px;
+    height: 50px;
+    font-size: 0;
+    display: block;
+}
+
+//p,
+//h1,
+//h2,
+//h3,
+//h4,
+//h5,
+//h6 {
+//    color: $black-gray;
+//}
+
+a {
+    color: $blue;
+}
+
+// TODO Classes
+
+.bold {
+    font-weight: bold;
+}
+
+.icon-only {
+    font-size: 0;
+
+    span {
+        font-size: 1rem;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.notification-general {
+    margin-bottom: 0 !important;
+}
+
+.menu-sh-btn {
+    span {
+        display: inline-block;
+        padding: 5px;
+        font-size: 1.2rem;
+    }
+}
+
+// TODO Grid
+
+#container-all {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'main';
+    min-height: 100vh;
+    background: $black;
+}
+
+#side-nav {
+    grid-area: sidenav;
+}
+
+main {
+    grid-area: main;
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+    #container-all {
+        grid-template-columns: 240px 1fr;
+        grid-template-areas:
+        "sidenav main";
+    }
+}
+
+// TODO Side nav
+
+#side-nav {
+    background: $black;
+    color: $white;
+    padding-top: 2rem;
+    padding-left: 1.5rem;
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    transition: all 300ms ease-in-out;
+    transform: translateX(-110%);
+
+    &.is-active {
+        transform: translateX(0);
+    }
+
+    > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 1.5rem;
+
+        a {
+            color: $white;
+        }
+    }
+
+    nav {
+        > p {
+            font-weight: 500;
+            margin-top: 1.2rem;
+            margin-bottom: .8rem;
+            color: rgba($white, .7);
+        }
+
+        > ul {
+            li {
+                a {
+                    color: $white;
+                    font-weight: 500;
+                    font-size: 1.125rem;
+                    display: flex;
+                    align-items: center;
+                    transition: 300ms ease-in-out;
+                    border-right: 8px solid transparent;
+                    padding: 0.625rem;
+
+                    &:hover, &.is-active {
+                        color: $yellow;
+                        border-right-color: $yellow;
+                    }
+
+                    span {
+                        font-size: 1.375rem;
+                        padding: 5px;
+                        margin-right: 1rem;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+    #side-nav {
+        position: static;
+        transform: translateX(0);
+    }
+
+    .menu-sh-btn {
+        display: none;
+    }
+}
+
+// TODO Main
+
+main {
+    background: $bg-main;
+    //border-radius: 15px 0 0 15px;
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+    main {
+        border-radius: 20px 0 0 20px
+    }
+}
+
+// TODO Top-bar
+
+#top-bar {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    // Menu button and Section title
+    > div:first-of-type {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+
+        .menu-sh-btn {
+            margin-right: .5rem;
+            color: $brown-dark;
+        }
+
+        h2 {
+            font-weight: bold;
+            font-size: 1.625rem;
+            color: $brown-dark;
+        }
+    }
+
+    .dropdown-menu {
+        > div {
+            border: 1px solid $brown;
+        }
+    }
+}
+
+#content {
+    padding: 1.5rem 1rem;
+}
+
+// TODO Welcome
+
+.welcome {
+    background: $blue-dark;
+    color: $white;
+    box-shadow: 0 0 6px rgba($blue-dark, .16);
+    padding: 1.5rem 1rem;
+    border-radius: 25px;
+    margin-bottom: 1rem;
+
+    .content {
+        margin-bottom: 0;
+
+        p {
+            &:first-of-type {
+                font-size: 1.125rem;
+                font-weight: bold;
+                margin-bottom: 1.1rem;
+            }
+        }
+    }
+
+    .img-container {
+        display: none;
+    }
+}
+
+
+@media screen and (min-width: $breakpoint-desktop) {
+    #content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .welcome {
+        width: 60%;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: $breakpoint-full-hd) {
+    .welcome {
+        display: flex;
+        justify-content: space-between;
+
+        .content {
+            flex-grow: 1;
+        }
+
+        .img-container {
+            display: block;
+            //width: 30%;
+            width: 640px;
+        }
+    }
+}
+
+
+// Buttons
+
+.buttons-section {
+    margin-bottom: 1.5rem;
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            width: 100%;
+            margin-bottom: 1rem;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            a {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 888px) {
+    .buttons-section {
+        ul {
+            justify-content: space-between;
+
+            li {
+                width: 48%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+    .buttons-section {
+        width: 40%;
+        padding-left: 1rem;
+
+        ul {
+            justify-content: start;
+            flex-direction: column;
+
+            li {
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+// TODO History
+
+.history {
+    background: $white;
+    border-radius: 10px;
+    box-shadow: 0 0 6px 0 rgba(29, 29, 29, 0.5);
+
+
+    header{
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba($black, .3);
+
+        .button{
+            background: $blue;
+            color: $white;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+    }
+
+    table{
+        width: 100%;
+        border-radius: 0 0 15px 15px;
+    }
+
+    img {
+        max-height: 35px;
+        border-radius: 100%;
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+.history{
+    width: 100%;
+    margin-top: 1rem;
+
+    img{
+        display: inline-block;
+    }
+
+    table{
+        tbody{
+            td:first-of-type{
+                display: flex;
+                align-items: center;
+                .img-container{
+                    margin-right: .5rem;
+                }
+            }
+        }
+    }
+}
+}

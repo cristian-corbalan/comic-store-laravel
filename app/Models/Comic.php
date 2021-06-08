@@ -12,8 +12,6 @@ class Comic extends Model
     use HasFactory;
 
 
-    /*Relaciones*/
-
     /**
      * Returns the comic cover
      * @return BelongsTo

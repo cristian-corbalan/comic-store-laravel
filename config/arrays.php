@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'controlPanelLinksAdmin' => [
+        [
+            'routeName' => 'control-panel.home',
+            'text' => 'Tablero',
+            'iconClass' => 'icon-dashboard',
+        ],
+    ],
     'websiteNavLinks' => [
         [
             'routeName' => 'home',
@@ -9,6 +16,10 @@ return [
         [
             'routeName' => 'comics.list',
             'text' => 'Comics'
+        ],
+        [
+            'routeName' => 'control-panel.home',
+            'text' => 'Intranet'
         ],
     ],
     'homeBannerImages' => [
