@@ -88,3 +88,11 @@ tabsBtn.forEach(e => {
     })
 
 })
+
+let notificationGeneral = document.querySelector('.notification-general')
+
+if(notificationGeneral){
+    setTimeout(()=>{
+        notificationGeneral.classList.add('is-hidden')
+    }, 10000)
+}

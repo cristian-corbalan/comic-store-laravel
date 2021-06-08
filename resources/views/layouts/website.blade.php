@@ -41,6 +41,11 @@
     </nav>
 </header>
 
+@if(Session::has('message'))
+    <x-general.notification message="{{Session::get('message')}}" type="{{Session::get('message_type') ?? 'is-danger'}}"></x-general.notification>
+@endif
+
+
 @yield('content')
 
 <footer>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ComicController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,6 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('/comics', [ComicController::class, 'websiteList'])->name('comics.list');
 Route::get('/comics/{comic}', [ComicController::class, 'websiteDetails'])->name('comics.details');
+
+
+Route::get('/shop/add/', [ShopController::class, 'add'])->name('shop.add');

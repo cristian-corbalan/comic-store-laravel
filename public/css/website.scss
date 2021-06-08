@@ -50,6 +50,10 @@ $filter-width: 280px;
     border: 0;
 }
 
+.notification-general{
+    margin-bottom: 0 !important;
+}
+
 // TODO Header
 
 .menu-sh-btn {
@@ -592,7 +596,7 @@ article.comic-item {
                 }
             }
 
-            button {
+            .button {
                 width: 100%;
                 max-width: 352px;
                 background: $blue-dark;
@@ -815,7 +819,7 @@ article.comic-item {
                 &:last-of-type {
                     margin-bottom: 0;
 
-                    button {
+                    .button {
                         margin: 0;
                     }
                 }

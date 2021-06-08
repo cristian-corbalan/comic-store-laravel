@@ -22,10 +22,10 @@
                 <p>USD$ {{$comic->price / 100}}</p>
             @endif
 
-            <button class="button">
+            <a href="{{route('shop.add')}}" class="button">
                 Añadir
                 <span class="icon-shopping-cart"></span>
-            </button>
+            </a>
         </div>
     </article>
 </div>

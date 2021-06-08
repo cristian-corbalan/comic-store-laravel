@@ -34,6 +34,10 @@
   border: 0;
 }
 
+.notification-general {
+  margin-bottom: 0 !important;
+}
+
 .menu-sh-btn {
   display: block;
 }
@@ -423,7 +427,7 @@ article.comic-item > div:last-of-type button:active span, article.comic-item > d
   font-size: 1.1rem;
   border-radius: 5px;
 }
-#comic-info > div:nth-child(3) > div:last-of-type button {
+#comic-info > div:nth-child(3) > div:last-of-type .button {
   width: 100%;
   max-width: 352px;
   background: #1066BC;
@@ -433,7 +437,7 @@ article.comic-item > div:last-of-type button:active span, article.comic-item > d
   display: block;
   margin: auto;
 }
-#comic-info > div:nth-child(3) > div:last-of-type button:hover {
+#comic-info > div:nth-child(3) > div:last-of-type .button:hover {
   background: #4A6AFF;
 }
 
@@ -578,7 +582,7 @@ article.comic-item > div:last-of-type button:active span, article.comic-item > d
   #comic-info > div:nth-child(3) > div:last-of-type {
     margin-bottom: 0;
   }
-  #comic-info > div:nth-child(3) > div:last-of-type button {
+  #comic-info > div:nth-child(3) > div:last-of-type .button {
     margin: 0;
   }
 

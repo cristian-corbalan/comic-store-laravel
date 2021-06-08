@@ -75,7 +75,7 @@
                         @endif
                     </div>
 
-                    <button class="button">Añadir al carro</button>
+                    <a href="{{route('shop.add')}}" class="button">Añadir al carro</a>
                 </div>
             </div>
         </div>
