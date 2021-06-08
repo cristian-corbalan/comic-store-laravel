@@ -230,6 +230,7 @@ main {
 
 #content {
     padding: 1.5rem 1rem;
+    max-width: 100vw;
 }
 
 // TODO Welcome
@@ -347,19 +348,27 @@ main {
 
 // TODO History
 
-.history {
+@media screen and (min-width: $breakpoint-desktop) {
+    .history {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
+
+// TODO TableContainerAll
+
+.table-container-all {
     background: $white;
     border-radius: 10px;
     box-shadow: 0 0 6px 0 rgba(29, 29, 29, 0.5);
 
-
-    header{
+    header {
         padding: 1rem;
         display: flex;
         justify-content: space-between;
         border-bottom: 1px solid rgba($black, .3);
 
-        .button{
+        .button {
             background: $blue;
             color: $white;
             font-weight: bold;
@@ -367,9 +376,15 @@ main {
         }
     }
 
-    table{
+    table {
         width: 100%;
         border-radius: 0 0 15px 15px;
+
+        tbody {
+            td {
+                vertical-align: inherit;
+            }
+        }
     }
 
     img {
@@ -377,28 +392,95 @@ main {
         border-radius: 100%;
         display: none;
     }
-
 }
 
 @media screen and (min-width: $breakpoint-desktop) {
-.history{
-    width: 100%;
-    margin-top: 1rem;
+    .table-container-all {
+        img {
+            display: inline-block;
+        }
 
-    img{
-        display: inline-block;
-    }
+        table {
+            tbody {
+                td:first-of-type {
+                    align-items: center;
 
-    table{
-        tbody{
-            td:first-of-type{
-                display: flex;
-                align-items: center;
-                .img-container{
-                    margin-right: .5rem;
+                    .img-container {
+                        margin-right: .5rem;
+                    }
                 }
             }
         }
     }
 }
+
+// TODO BtnRounded
+
+.btn-rounded {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+
+    a {
+        display: block;
+        padding: 1.5rem;
+        border-radius: 100%;
+        background: $yellow;
+        box-shadow: 0 0 6px rgba($black, .4);
+        transition: 300ms;
+
+        &:hover {
+            background: $brown-dark;
+
+            span {
+                color: $yellow;
+
+            }
+        }
+
+        span {
+            font-size: 1.5rem;
+            color: $brown-dark;
+        }
+    }
+}
+
+// TODO Comic List
+
+#content.comic-list {
+    padding-bottom: 4rem;
+
+
+    .table-container-all{
+        width: 100%;
+    }
+
+    td {
+        ul {
+            display: flex;
+
+            li {
+                width: 50%;
+                padding: 1rem 1.5rem;
+
+                a {
+                    span {
+                        font-size: 1.2rem;
+                    }
+                }
+
+                &:first-of-type a:hover span{
+                    color: $yellow;
+                }
+
+                &:last-of-type a:hover span{
+                    color: $blue;
+                }
+            }
+        }
+
+        &.td-title{
+            max-width: 300px;
+        }
+    }
 }

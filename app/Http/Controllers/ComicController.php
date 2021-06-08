@@ -20,4 +20,12 @@ class ComicController extends Controller
 
         return view('website.pages.comics.details', compact('comic'));
     }
+
+    public function controlPanelList()
+    {
+        $comics = Comic::with('cover', 'brand')->get();
+
+
+        return view('control-panel.comics.list', compact('comics'));
+    }
 }

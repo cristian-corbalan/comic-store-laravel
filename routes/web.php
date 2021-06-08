@@ -28,3 +28,4 @@ Route::get('/shop/add/', [ShopController::class, 'add'])->name('shop.add');
 
 
 Route::get('/intranet/', [ControlPanelController::class, 'home'])->name('control-panel.home');
+Route::get('/intranet/comics', [ComicController::class, 'controlPanelList'])->name('control-panel.comics.list');

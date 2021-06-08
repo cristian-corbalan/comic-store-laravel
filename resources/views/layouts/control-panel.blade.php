@@ -74,7 +74,7 @@
             </div>
         </header>
 
-        <div id="content">
+        <div id="content" class="@yield('contentClass', 'default')">
             @yield('content')
         </div>
     </main>

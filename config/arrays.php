@@ -7,6 +7,11 @@ return [
             'text' => 'Tablero',
             'iconClass' => 'icon-dashboard',
         ],
+        [
+            'routeName' => 'control-panel.comics.list',
+            'text' => 'Comics',
+            'iconClass' => 'icon-comics',
+        ],
     ],
     'websiteNavLinks' => [
         [

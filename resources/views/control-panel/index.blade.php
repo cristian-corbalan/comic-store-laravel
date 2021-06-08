@@ -1,6 +1,8 @@
 @extends('layouts.control-panel')
 
 
+
+
 @section('content')
     <div class="welcome">
         <div class="content">
@@ -35,7 +37,7 @@
         </ul>
     </div>
 
-    <div class="history">
+    <div class="history table-container-all">
         <header>
             <h2>Historial</h2>
             <a href="#" class="button is-small is-uppercase">Ver todo</a>
@@ -52,7 +54,7 @@
                 <tbody>
                 @foreach($history as $action)
                     <tr>
-                        <td>
+                        <td class="is-flex">
                             <div class="img-container">
                                 <img
                                     src="{{asset('storage/img/' . $action->user->profileImg->src)}}"
@@ -64,7 +66,6 @@
                         <td>{{$action->action}}</td>
                     </tr>
                 @endforeach
-                <tr></tr>
                 </tbody>
             </table>
         </div>
