@@ -22,7 +22,7 @@
         </div>
 
         @auth()
-            <a href="#" class="button">Registrarse</a>
+            <a href="#" class="button">Salir</a>
         @else
             <a href="#" class="button">Ingresar</a>
         @endauth
