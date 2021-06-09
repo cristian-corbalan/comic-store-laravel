@@ -451,7 +451,7 @@ main {
     padding-bottom: 4rem;
 
 
-    .table-container-all{
+    .table-container-all {
         width: 100%;
     }
 
@@ -469,18 +469,104 @@ main {
                     }
                 }
 
-                &:first-of-type a:hover span{
+                &:first-of-type a:hover span {
                     color: $yellow;
                 }
 
-                &:last-of-type a:hover span{
+                &:last-of-type a:hover span {
                     color: $blue;
                 }
             }
         }
 
-        &.td-title{
+        &.td-title {
             max-width: 300px;
+        }
+    }
+}
+
+#content.comic-form {
+    display: block;
+
+    h3 {
+        font-weight: bold;
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+        color: $brown-dark;
+        text-align: center;
+    }
+
+    select, .select {
+        width: 100%;
+    }
+
+    form {
+        button {
+            width: 100%;
+            max-width: 300px;
+            background: $blue-dark;
+            transition: 300ms;
+            margin: auto;
+            display: block;
+
+            &:hover {
+                background: $blue;
+            }
+        }
+    }
+}
+
+$input-width: 48%;
+
+@media screen and (min-width: $breakpoint-desktop) {
+    #content.comic-form {
+        form{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: auto;
+            .field{
+                margin-bottom: 2rem;
+                // Title and pages
+                &:nth-of-type(1),
+                &:nth-of-type(2){
+                    width: $input-width;
+                }
+
+                // Synopsis
+                &:nth-of-type(3){
+                    width: 100%;
+                }
+
+                &:nth-of-type(4),
+                &:nth-of-type(5),
+                &:nth-of-type(6){
+                    width: 32%;
+                }
+
+
+                // Date and cover
+                &:nth-of-type(7),
+                &:nth-of-type(8){
+                    width: $input-width;
+                }
+
+                &:nth-of-type(9){
+                    width: 100%;
+                }
+
+                &:nth-of-type(10),
+                &:nth-of-type(11),
+                &:nth-of-type(12),
+                &:nth-of-type(13){
+                    width: $input-width;
+                }
+
+                &:last-of-type{
+                    width: 100%;
+                }
+            }
         }
     }
 }

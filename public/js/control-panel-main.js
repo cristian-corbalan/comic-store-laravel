@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $('.select2').select2();
+});
+
 let html = document.querySelector('html');
 
 // TODO Show and hide Menu
@@ -45,3 +49,4 @@ mainDropdown.addEventListener('click', ev => {
 
     }
 })
+

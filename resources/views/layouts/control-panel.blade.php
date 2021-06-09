@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{url('css/icomoon.css')}}">
 
     {{--Styles--}}
+    <link rel="stylesheet" href="{{url('css/select2.min.css')}}">
     <link rel="stylesheet" href="{{url('css/bulma.min.css')}}">
     <link rel="stylesheet" href="{{url('css/control-panel.css')}}">
 </head>
@@ -74,12 +75,18 @@
             </div>
         </header>
 
+        @if(Session::has('message'))
+            <x-general.notification message="{{Session::get('message')}}" type="{{Session::get('message_type') ?? 'is-danger'}}"></x-general.notification>
+        @endif
+
         <div id="content" class="@yield('contentClass', 'default')">
             @yield('content')
         </div>
     </main>
 </div>
 
+<script src="{{url('js/jquery.min.js')}}"></script>
+<script src="{{url('js/select2.min.js')}}"></script>
 <script src="{{url('js/control-panel-main.js')}}"></script>
 </body>
 </html>

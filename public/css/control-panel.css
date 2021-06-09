@@ -351,4 +351,63 @@ main {
   max-width: 300px;
 }
 
+#content.comic-form {
+  display: block;
+}
+#content.comic-form h3 {
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  color: #6C584C;
+  text-align: center;
+}
+#content.comic-form select, #content.comic-form .select {
+  width: 100%;
+}
+#content.comic-form form button {
+  width: 100%;
+  max-width: 300px;
+  background: #1066BC;
+  transition: 300ms;
+  margin: auto;
+  display: block;
+}
+#content.comic-form form button:hover {
+  background: #4A6AFF;
+}
+
+@media screen and (min-width: 1024px) {
+  #content.comic-form form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: auto;
+  }
+  #content.comic-form form .field {
+    margin-bottom: 2rem;
+  }
+  #content.comic-form form .field:nth-of-type(1), #content.comic-form form .field:nth-of-type(2) {
+    width: 48%;
+  }
+  #content.comic-form form .field:nth-of-type(3) {
+    width: 100%;
+  }
+  #content.comic-form form .field:nth-of-type(4), #content.comic-form form .field:nth-of-type(5), #content.comic-form form .field:nth-of-type(6) {
+    width: 32%;
+  }
+  #content.comic-form form .field:nth-of-type(7), #content.comic-form form .field:nth-of-type(8) {
+    width: 48%;
+  }
+  #content.comic-form form .field:nth-of-type(9) {
+    width: 100%;
+  }
+  #content.comic-form form .field:nth-of-type(10), #content.comic-form form .field:nth-of-type(11), #content.comic-form form .field:nth-of-type(12), #content.comic-form form .field:nth-of-type(13) {
+    width: 48%;
+  }
+  #content.comic-form form .field:last-of-type {
+    width: 100%;
+  }
+}
+
 /*# sourceMappingURL=control-panel.css.map */

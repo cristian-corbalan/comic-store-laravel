@@ -7,10 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+/**
+ * @method static create(array $data)
+ */
 class Comic extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = [
+        'title',
+        'synopsis',
+        'number_pages',
+        'price',
+        'discount',
+        'stock',
+        'publication_date',
+        'cover_img_id',
+        'brand_id',
+    ];
 
     /**
      * Returns the comic cover

@@ -6,7 +6,7 @@
 
 @section('content')
     <p class="btn-rounded">
-        <a href="#" class="icon-only">
+        <a href="{{route('control-panel.comics.form')}}" class="icon-only">
             <span class="icon-add"></span>
             Añadir un nuevo comic
         </a>
