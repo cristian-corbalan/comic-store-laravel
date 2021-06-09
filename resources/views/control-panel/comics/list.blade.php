@@ -53,7 +53,7 @@
                         <td>
                             <ul>
                                 <li><a href="#" class="icon-only"><span class="icon-edit"></span>Editar</a></li>
-                                <li><a href="#" class="icon-only has-text-danger"><span class="icon-trash"></span>Editar</a></li>
+                                <li><a href="#" class="icon-only has-text-danger"><span class="icon-trash"></span>Eliminar</a></li>
                             </ul>
                         </td>
                     </tr>
