@@ -3,20 +3,36 @@
 
 @section('content')
     <main id="main-comic-list">
-        <section id="filters" class="modal">
-            <div class="modal-background filter-sh-btn"></div>
+        <section id="filters" class="modal" data-name="filters-modal">
+            <div
+                class="modal-background filter-sh-btn"
+                data-role="toggle"
+                data-target="filters-modal"
+                data-target-class="is-active"
+                data-clip="true"></div>
 
             <div class="modal-content">
                 <p class="title is-4">Filtros</p>
                 <p>Próximamente</p>
             </div>
 
-            <button class="modal-close is-large filter-sh-btn" aria-label="close"></button>
+            <button
+                class="modal-close is-large filter-sh-btn"
+                aria-label="close"
+                data-role="toggle"
+                data-target="filters-modal"
+                data-target-class="is-active"
+                data-clip="true"></button>
         </section>
 
         <section id="comics-list">
             <header>
-                <button class="button filter-sh-btn">
+                <button
+                    class="button filter-sh-btn"
+                    data-role="toggle"
+                    data-target="filters-modal"
+                    data-target-class="is-active"
+                    data-clip="true">
                     Filtros
                     <span class="icon-filter"></span>
                 </button>

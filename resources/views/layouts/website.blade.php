@@ -16,7 +16,16 @@
 <header>
     <div>
         <div>
-            <a href="#" class="menu-sh-btn icon-only"><span class="icon-bars"></span>Abrir</a>
+            <a
+                href="#"
+                class="menu-sh-btn icon-only"
+                data-role="toggle"
+                data-target="website-menu"
+                data-target-class="active"
+                data-clip="true">
+                <span class="icon-bars"></span>
+                Abrir
+            </a>
 
             <h1 id="logo">Comic store</h1>
         </div>
@@ -28,8 +37,17 @@
         @endauth
     </div>
 
-    <nav>
-        <a href="#" class="menu-sh-btn icon-only"><span class="icon-close"></span>Cerrar</a>
+    <nav data-name="website-menu">
+        <a
+            href="#"
+            class="menu-sh-btn icon-only"
+            data-role="toggle"
+            data-target="website-menu"
+            data-target-class="active"
+            data-clip="true">
+            <span class="icon-close"></span>
+            Cerrar
+        </a>
 
         <a class="logo">Comic store</a>
 
@@ -42,7 +60,8 @@
 </header>
 
 @if(Session::has('message'))
-    <x-general.notification message="{{Session::get('message')}}" type="{{Session::get('message_type') ?? 'is-danger'}}"></x-general.notification>
+    <x-general.notification message="{{Session::get('message')}}"
+                            type="{{Session::get('message_type') ?? 'is-danger'}}"></x-general.notification>
 @endif
 
 

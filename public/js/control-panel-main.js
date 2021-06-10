@@ -1,52 +1,37 @@
-$(document).ready(function() {
-    $('.select2').select2();
-});
+const htmlDom = document.querySelector('html');
 
-let html = document.querySelector('html');
+document.querySelectorAll('[data-role="toggle"]').forEach(e => {
 
-// TODO Show and hide Menu
+    e.addEventListener('click', ev => {
+        ev.preventDefault();
 
-let sideNavShownAndHideButtons = document.querySelectorAll('.menu-sh-btn');
-let sideNav = document.getElementById('side-nav');
-let menuController = false;
+        let target = e.dataset.target;
 
-// console.log(sideNavShownAndHideButtons)
-// console.log(sideNav)
+        document.querySelectorAll(`[data-name="${target}"]`).forEach(obj => {
 
-if (sideNavShownAndHideButtons) {
-    sideNavShownAndHideButtons.forEach(e => {
-        e.addEventListener('click', function (ev) {
-            ev.preventDefault();
+            obj.classList.toggle(e.dataset.targetClass);
 
-            if (!menuController) {
-                sideNav.classList.add("is-active");
-                html.classList.add("is-clipped");
-                menuController = true;
-            } else {
-                sideNav.classList.remove('is-active');
-                html.classList.remove('is-clipped');
-                menuController = false;
+            if (e.dataset.clip) {
+                htmlDom.classList.toggle('is-clipped');
             }
         });
-    })
+    });
+});
 
-    window.addEventListener('resize', function () {
-        if (screen.width > 768) {
-            sideNav.classList.remove('is-active');
-            html.classList.remove('is-clipped');
-            menuController = false;
-        }
-    })
-}
-
-let mainDropdown = document.getElementById('user-dropdown');
-
-mainDropdown.addEventListener('click', ev => {
-    if (mainDropdown.classList.contains( 'is-active' )){
-        mainDropdown.classList.remove('is-active');
-    }else{
-        mainDropdown.classList.add('is-active');
-
+window.addEventListener('resize', function () {
+    if (screen.width > 768) {
+        document.querySelector(`[data-name="control-panel-menu"]`).classList.remove('is-active');
+        htmlDom.classList.remove('is-clipped');
     }
 })
+
+// TODO Notification
+
+let notificationGeneral = document.querySelector('.notification-general')
+
+if(notificationGeneral){
+    setTimeout(()=>{
+        notificationGeneral.classList.add('is-hidden')
+    }, 10000)
+}
 
