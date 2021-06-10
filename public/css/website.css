@@ -180,6 +180,7 @@ main section {
 
 #popular-products ul {
   margin: auto;
+  overflow-x: auto;
 }
 
 #pills {
