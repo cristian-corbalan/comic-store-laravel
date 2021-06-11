@@ -23,7 +23,7 @@
     <div class="buttons-section">
         <ul>
             <li>
-                <a href="#" class="button">
+                <a href="{{route('control-panel.comics.form')}}" class="button">
                     Añadir un nuevo comic
                     <span class="icon-add-rounded"></span>
                 </a>
