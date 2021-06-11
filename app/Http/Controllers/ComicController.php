@@ -81,4 +81,19 @@ class ComicController extends Controller
             ->with('message', 'La comic se añadió con éxito.')
             ->with('message_type', 'is-info');
     }
+
+    public function delete(Comic $comic)
+    {
+        $comic->delete();
+
+        $comic->genres()->detach();
+        $comic->characters()->detach();
+        $comic->authors()->detach();
+        $comic->artists()->detach();
+
+        return redirect()
+            ->route('control-panel.comics.list')
+            ->with('message', 'La comic se elimino con éxito.')
+            ->with('message_type', 'is-info');
+    }
 }

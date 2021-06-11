@@ -22,6 +22,7 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('/comics', [ComicController::class, 'websiteList'])->name('comics.list');
 Route::get('/comics/{comic}', [ComicController::class, 'websiteDetails'])->name('comics.details');
+Route::delete('/comics/{comic}/eliminar', [ComicController::class, 'delete'])->name('comics.delete');
 
 
 Route::get('/shop/add/', [ShopController::class, 'add'])->name('shop.add');

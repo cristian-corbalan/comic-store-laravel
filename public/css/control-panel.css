@@ -344,8 +344,22 @@ main {
 #content.comic-list td ul li:first-of-type a:hover span {
   color: #FED049;
 }
-#content.comic-list td ul li:last-of-type a:hover span {
-  color: #4A6AFF;
+#content.comic-list td ul li:last-of-type button {
+  background: none;
+  border: none;
+  color: #f14668;
+}
+#content.comic-list td ul li:last-of-type button span:last-of-type {
+  display: none;
+}
+#content.comic-list td ul li:last-of-type button:hover {
+  cursor: pointer;
+}
+#content.comic-list td ul li:last-of-type button:hover span:first-of-type {
+  display: none;
+}
+#content.comic-list td ul li:last-of-type button:hover span:last-of-type {
+  display: block;
 }
 #content.comic-list td.td-title {
   max-width: 300px;

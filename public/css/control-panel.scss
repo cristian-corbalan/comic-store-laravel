@@ -473,8 +473,28 @@ main {
                     color: $yellow;
                 }
 
-                &:last-of-type a:hover span {
-                    color: $blue;
+                &:last-of-type button {
+                    background: none;
+                    border: none;
+                    color: #f14668 ;
+
+                    span:last-of-type{
+                        display: none;
+                    }
+
+                    &:hover{
+                        cursor: pointer;
+
+                        span{
+                            &:first-of-type{
+                                display: none;
+                            }
+
+                            &:last-of-type{
+                                display: block;
+                            }
+                        }
+                    }
                 }
             }
         }

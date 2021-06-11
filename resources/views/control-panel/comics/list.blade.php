@@ -53,7 +53,20 @@
                         <td>
                             <ul>
                                 <li><a href="#" class="icon-only"><span class="icon-edit"></span>Editar</a></li>
-                                <li><a href="#" class="icon-only has-text-danger"><span class="icon-trash"></span>Eliminar</a></li>
+
+                                <li>
+                                    <form action="{{route('comics.delete', ['comic' => $comic->id])}}" method="POST">
+                                        @csrf
+
+                                        @method('DELETE')
+
+                                        <button type="submit" class="icon-only">
+                                            <span class="icon-trash"></span>
+                                            <span class="icon-trash-open"></span>
+                                            Eliminar
+                                        </button>
+                                    </form>
+                                </li>
                             </ul>
                         </td>
                     </tr>
