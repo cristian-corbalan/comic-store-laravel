@@ -1,3 +1,20 @@
+@php
+    $values = [
+            'title' => old('title') ?? null,
+            'number_pages' => old('number_pages') ?? null,
+            'synopsis' => old('synopsis') ?? null,
+            'price' => old('price') ?? 1,
+            'discount' => old('discount') ?? 0,
+            'stock' => old('stock') ?? 1,
+            'publication_date' => old('publication_date') ?? null,
+            'brand_id' => old('brand_id') ?? null,
+            'genres' => old('genres') ?? [],
+            'characters' => old('characters') ?? [],
+            'authors' => old('authors') ?? [],
+            'artists' => old('artists') ?? [],
+        ];
+@endphp
+
 @extends('layouts.control-panel')
 
 @section('sectionTitle', 'Comics')
@@ -8,17 +25,19 @@
     <h3>Añadir un comic</h3>
 
     <form action="{{route('control-panel.comics.new')}}" method="POST" enctype="multipart/form-data">
+        <p>Todos los campos con <span class="has-text-danger">*</span> son obligatorios</p>
+
         @csrf
 
         <div class="field">
-            <label class="label" for="title-input">Titulo</label>
+            <label class="label" for="title-input">Titulo <span class="has-text-danger">*</span></label>
             <div class="control">
                 <input
                     class="input"
                     type="text"
                     id="title-input"
                     name="title"
-                    value="{{old('title')}}"
+                    value="{{$values["title"]}}"
                     @error('title') aria-describedby="title-error" @enderror/>
             </div>
 
@@ -35,7 +54,7 @@
                     type="number"
                     id="number-page-input"
                     name="number_pages"
-                    value="{{old('number_pages')}}"
+                    value="{{$values["number_pages"]}}"
                     @error('number_pages') aria-describedby="number_pages-error" @enderror/>
             </div>
 
@@ -45,13 +64,13 @@
         </div>
 
         <div class="field">
-            <label class="label" for="synopsis-input">Sinopsis</label>
+            <label class="label" for="synopsis-input">Sinopsis <span class="has-text-danger">*</span></label>
             <div class="control">
                     <textarea
                         class="textarea"
                         id="synopsis-input"
                         name="synopsis"
-                        @error('synopsis') aria-describedby="synopsis-error" @enderror>{{old('synopsis')}}</textarea>
+                        @error('synopsis') aria-describedby="synopsis-error" @enderror>{{$values["synopsis"]}}</textarea>
             </div>
 
             @error('synopsis')
@@ -60,14 +79,14 @@
         </div>
 
         <div class="field">
-            <label class="label" for="price-input">Precio</label>
+            <label class="label" for="price-input">Precio <span class="has-text-danger">*</span></label>
             <div class="control">
                 <input
                     class="input"
                     type="number"
                     id="price-input"
                     name="price"
-                    value="{{old('price') ?? 1}}"
+                    value="{{$values["price"]}}"
                     @error('price') aria-describedby="price-error" @enderror/>
             </div>
 
@@ -77,14 +96,14 @@
         </div>
 
         <div class="field">
-            <label class="label" for="discount-input">Descuento</label>
+            <label class="label" for="discount-input">Descuento <span class="has-text-danger">*</span></label>
             <div class="control">
                 <input
                     class="input"
                     type="number"
                     id="discount-input"
                     name="discount"
-                    value="{{old('discount') ?? 0}}"
+                    value="{{$values["discount"]}}"
                     @error('discount') aria-describedby="discount-error" @enderror/>
             </div>
 
@@ -95,14 +114,14 @@
 
 
         <div class="field">
-            <label class="label" for="stock-input">Stock</label>
+            <label class="label" for="stock-input">Stock <span class="has-text-danger">*</span></label>
             <div class="control">
                 <input
                     class="input"
                     type="number"
                     id="stock-input"
                     name="stock"
-                    value="{{old('stock') ?? 1}}"
+                    value="{{$values["stock"]}}"
                     @error('stock') aria-describedby="stock-error" @enderror/>
             </div>
 
@@ -113,14 +132,14 @@
 
 
         <div class="field">
-            <label class="label" for="publication-date-input">Fecha de publicación</label>
+            <label class="label" for="publication-date-input">Fecha de publicación <span class="has-text-danger">*</span></label>
             <div class="control">
                 <input
                     class="input"
                     type="date"
                     id="publication-date-input"
                     name="publication_date"
-                    value="{{old('publication_date')}}"
+                    value="{{$values["publication_date"]}}"
                     @error('publication_date') aria-describedby="publication_date-error" @enderror/>
             </div>
 
@@ -130,23 +149,24 @@
         </div>
 
         <div class="field">
-            <label class="label" for="cover-input">Portada del comic</label>
+            <label class="label" for="cover-input">Portada del comic <span class="has-text-danger">*</span></label>
             <div class="control">
                 <input
                     class="input"
                     type="file"
                     id="cover-input"
                     name="cover"
-                    @error('cover') aria-describedby="cover-error" @enderror/>
+                    aria-describedby="cover-help @error('cover') cover-error @enderror" />
             </div>
 
             @error('cover')
             <div class="notification is-danger" id="cover-error">{{$message}}</div>
             @enderror
+            <p class="help" id="cover-help">La imagen debe ser JPG.</p>
         </div>
 
         <div class="field">
-            <label class="label" for="brand-select">Seleccione la marca</label>
+            <label class="label" for="brand-select">Seleccione la marca <span class="has-text-danger">*</span></label>
 
             <div class="control">
                 <div class="select">
@@ -157,7 +177,7 @@
                         @foreach($brands as $brand)
                             <option
                                 value="{{$brand->id}}"
-                                @if(old('brand_id') == $brand->id) selected @endif>
+                                @if($values["brand_id"] == $brand->id) selected @endif>
                                 {{$brand->name}}
                             </option>
                         @endforeach
@@ -172,7 +192,7 @@
 
         <div class="field">
             <div class="select is-multiple">
-                <label class="label" for="genres-select">Seleccione los géneros</label>
+                <label class="label" for="genres-select">Seleccione los géneros <span class="has-text-danger">*</span></label>
 
                 <select
                     name="genres[]" id="genres-select" multiple size="4"
@@ -181,7 +201,7 @@
                     @foreach($genres as $genre)
                         <option
                             value="{{$genre->id}}"
-                            @if(in_array($genre->id, old('genres', []))) selected @endif>
+                            @if(in_array($genre->id, $values["genres"])) selected @endif>
                             {{$genre->name}}
                         </option>
                     @endforeach
@@ -195,7 +215,7 @@
 
         <div class="field">
             <div class="select is-multiple">
-                <label class="label" for="characters-select">Seleccione los personajes</label>
+                <label class="label" for="characters-select">Seleccione los personajes <span class="has-text-danger">*</span></label>
 
                 <select
                     name="characters[]" id="characters-select" multiple size="4"
@@ -204,7 +224,7 @@
                     @foreach($characters as $character)
                         <option
                             value="{{$character->id}}"
-                            @if(in_array($character->id, old('characters', []))) selected @endif>
+                            @if(in_array($character->id, $values["characters"])) selected @endif>
                             {{$character->name}}
                         </option>
                     @endforeach
@@ -218,7 +238,7 @@
 
         <div class="field">
             <div class="select is-multiple">
-                <label class="label" for="authors-select">Seleccione los escritores</label>
+                <label class="label" for="authors-select">Seleccione los escritores <span class="has-text-danger">*</span></label>
 
                 <select
                     name="authors[]" id="authors-select" multiple size="4"
@@ -227,7 +247,7 @@
                     @foreach($authors as $author)
                         <option
                             value="{{$author->id}}"
-                            @if(in_array($author->id, old('authors', []))) selected @endif>
+                            @if(in_array($author->id, $values["authors"])) selected @endif>
                             {{$author->name}}
                         </option>
                     @endforeach
@@ -241,7 +261,7 @@
 
         <div class="field">
             <div class="select is-multiple">
-                <label class="label" for="artists-select">Seleccione los artistas</label>
+                <label class="label" for="artists-select">Seleccione los artistas <span class="has-text-danger">*</span></label>
 
                 <select
                     name="artists[]" id="artists-select" multiple size="4"
@@ -250,7 +270,7 @@
                     @foreach($artists as $artist)
                         <option
                             value="{{$artist->id}}"
-                            @if(in_array($artist->id, old('artists', []))) selected @endif>
+                            @if(in_array($artist->id, $values["artists"])) selected @endif>
                             {{$artist->name}}
                         </option>
                     @endforeach

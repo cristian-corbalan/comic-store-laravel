@@ -364,6 +364,10 @@ main {
 #content.comic-form select, #content.comic-form .select {
   width: 100%;
 }
+#content.comic-form form > p:first-of-type {
+  margin-bottom: 2rem;
+  text-align: center;
+}
 #content.comic-form form button {
   width: 100%;
   max-width: 300px;
@@ -383,6 +387,9 @@ main {
     flex-wrap: wrap;
     max-width: 800px;
     margin: auto;
+  }
+  #content.comic-form form > p:first-of-type {
+    width: 100%;
   }
   #content.comic-form form .field {
     margin-bottom: 2rem;
