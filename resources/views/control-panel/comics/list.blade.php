@@ -52,7 +52,7 @@
                         </td>
                         <td>
                             <ul>
-                                <li><a href="#" class="icon-only"><span class="icon-edit"></span>Editar</a></li>
+                                <li><a href="{{route('control-panel.comics.edit',['comic' => $comic->id])}}" class="icon-only"><span class="icon-edit"></span>Editar</a></li>
 
                                 <li>
                                     <form action="{{route('comics.delete', ['comic' => $comic->id])}}" method="POST">

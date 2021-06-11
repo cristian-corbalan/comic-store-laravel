@@ -14,7 +14,7 @@
             </nav>
 
             <div>
-                <img src="{{asset('storage/img/'. $comic->cover->src)}}" alt="">
+                <img src="{{asset('storage/img/'. $comic->cover->src)}}" alt="{{$comic->cover->alt}}">
             </div>
 
             <div>

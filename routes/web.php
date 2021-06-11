@@ -20,15 +20,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::get('/comics', [ComicController::class, 'websiteList'])->name('comics.list');
-Route::get('/comics/{comic}', [ComicController::class, 'websiteDetails'])->name('comics.details');
-Route::delete('/comics/{comic}/eliminar', [ComicController::class, 'delete'])->name('comics.delete');
-
 
 Route::get('/shop/add/', [ShopController::class, 'add'])->name('shop.add');
 
 
 Route::get('/intranet/', [ControlPanelController::class, 'home'])->name('control-panel.home');
 Route::get('/intranet/comics', [ComicController::class, 'controlPanelList'])->name('control-panel.comics.list');
-Route::get('/intranet/comics/nuevo', [ComicController::class, 'controlPanelForm'])->name('control-panel.comics.form');
-Route::post('/intranet/comics/nuevo', [ComicController::class, 'new'])->name('control-panel.comics.new');
+Route::get('/intranet/comics/nuevo', [ComicController::class, 'controlPanelFormNew'])->name('control-panel.comics.form');
+Route::get('/intranet/comics/{comic}/editar', [ComicController::class, 'controlPanelFormEdit'])->name('control-panel.comics.edit');
+
+Route::get('/comics', [ComicController::class, 'websiteList'])->name('comics.list');
+Route::get('/comics/{comic}', [ComicController::class, 'websiteDetails'])->name('comics.details');
+
+Route::post('/comics/nuevo', [ComicController::class, 'new'])->name('comics.new');
+Route::delete('/comics/{comic}/eliminar', [ComicController::class, 'delete'])->name('comics.delete');
+Route::put('/comics/{comic}/editar', [ComicController::class, 'edit'])->name('comics.edit');

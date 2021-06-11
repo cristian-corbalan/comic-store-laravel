@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ComicInsertRequest extends FormRequest
+class ComicUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,14 @@ class ComicInsertRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|min:2|unique:comics,title',
+            'title' => 'required|min:2',
             'synopsis' => 'required|min:10',
             'number_pages' => 'nullable|numeric|min:1|max:65535', // Why does it not validate?
             'price' => 'required|numeric|min:1',
             'discount' => 'numeric|min:0|max:100',
             'stock' => 'nullable|numeric|min:0',
             'publication_date' => 'required|before_or_equal:now',
-            'cover' => 'required|image|mimes:jpg',
+            'cover' => 'image|mimes:jpg',
             'brand_id' => 'required|exists:brands,id',
             'genres' => 'required|exists:genres,id',
             'characters' => 'required|exists:characters,id',
