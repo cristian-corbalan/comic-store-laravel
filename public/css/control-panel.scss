@@ -361,6 +361,7 @@ main {
     background: $white;
     border-radius: 10px;
     box-shadow: 0 0 6px 0 rgba(29, 29, 29, 0.5);
+    width: 100%;
 
     header {
         padding: 1rem;
@@ -381,8 +382,12 @@ main {
         border-radius: 0 0 15px 15px;
 
         tbody {
+            tr{
+                border-bottom: 1px solid rgba($black-gray, .2);
+            }
             td {
                 vertical-align: inherit;
+                border: none;
             }
         }
     }

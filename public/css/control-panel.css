@@ -264,6 +264,7 @@ main {
   background: #FFFFFF;
   border-radius: 10px;
   box-shadow: 0 0 6px 0 rgba(29, 29, 29, 0.5);
+  width: 100%;
 }
 .table-container-all header {
   padding: 1rem;
@@ -281,8 +282,12 @@ main {
   width: 100%;
   border-radius: 0 0 15px 15px;
 }
+.table-container-all table tbody tr {
+  border-bottom: 1px solid rgba(80, 80, 80, 0.2);
+}
 .table-container-all table tbody td {
   vertical-align: inherit;
+  border: none;
 }
 .table-container-all img {
   max-height: 35px;
