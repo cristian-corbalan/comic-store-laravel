@@ -12,6 +12,11 @@ return [
             'text' => 'Comics',
             'iconClass' => 'icon-comics',
         ],
+        [
+            'routeName' => 'control-panel.users.list',
+            'text' => 'Usuarios',
+            'iconClass' => 'icon-users',
+        ],
     ],
     'websiteNavLinks' => [
         [

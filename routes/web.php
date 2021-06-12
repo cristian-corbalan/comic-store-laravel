@@ -4,6 +4,7 @@ use App\Http\Controllers\ComicController;
 use App\Http\Controllers\ControlPanelController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,7 @@ Route::get('/intranet/', [ControlPanelController::class, 'home'])->name('control
 Route::get('/intranet/comics', [ComicController::class, 'controlPanelList'])->name('control-panel.comics.list');
 Route::get('/intranet/comics/nuevo', [ComicController::class, 'controlPanelFormNew'])->name('control-panel.comics.form');
 Route::get('/intranet/comics/{comic}/editar', [ComicController::class, 'controlPanelFormEdit'])->name('control-panel.comics.edit');
+Route::get('/intranet/users', [UserController::class, 'controlPanelList'])->name('control-panel.users.list');
 
 Route::get('/comics', [ComicController::class, 'websiteList'])->name('comics.list');
 Route::get('/comics/{comic}', [ComicController::class, 'websiteDetails'])->name('comics.details');
