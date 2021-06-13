@@ -29,7 +29,8 @@ return [
         ],
         [
             'routeName' => 'control-panel.home',
-            'text' => 'Intranet'
+            'text' => 'Intranet',
+            'authRequired' => true
         ],
     ],
     'homeBannerImages' => [

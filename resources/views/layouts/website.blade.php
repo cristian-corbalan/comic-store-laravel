@@ -53,7 +53,14 @@
 
         <ul>
             @foreach(config('arrays.websiteNavLinks') as $link)
-                <li><a href="{{route($link['routeName'])}}">{{$link['text']}}</a></li>
+                @if(isset($link['authRequired']))
+                    @auth
+                        <li><a href="{{route($link['routeName'])}}">{{$link['text']}}</a></li>
+                    @endauth
+                @else
+                    <li><a href="{{route($link['routeName'])}}">{{$link['text']}}</a></li>
+                @endif
+
             @endforeach
         </ul>
     </nav>
