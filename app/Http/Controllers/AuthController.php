@@ -30,4 +30,10 @@ class AuthController extends Controller
     public function signUpForm(){
         return view('authentication.sign-up');
     }
+
+    public function logOut(){
+        auth()->logout();
+
+        return redirect()->route('auth.login-form');
+    }
 }

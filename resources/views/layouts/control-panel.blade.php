@@ -85,7 +85,7 @@
 
                         <hr class="dropdown-divider">
 
-                        <a href="#" class="dropdown-item has-text-danger is-flex is-align-items-center">
+                        <a href="{{route('auth.log-out')}}" class="dropdown-item has-text-danger is-flex is-align-items-center">
                             <span class="icon is-small mr-2">
                                 <span class="icon-logout"></span>
                             </span>
