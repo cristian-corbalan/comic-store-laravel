@@ -22,8 +22,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::get('/ingresar', [AuthController::class, 'login'])->name('auth.login');
-Route::get('/registrarse', [AuthController::class, 'signUp'])->name('auth.sign-up');
+Route::get('/ingresar', [AuthController::class, 'loginForm'])->name('auth.login-form');
+Route::get('/registrarse', [AuthController::class, 'signUpForm'])->name('auth.sign-up-form');
+
+Route::post('/ingresar', [AuthController::class, 'login'])->name('auth.login');
 
 Route::get('/shop/add/', [ShopController::class, 'add'])->name('shop.add');
 

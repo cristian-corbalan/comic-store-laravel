@@ -22,16 +22,22 @@
         </div>
 
         <div class="img-container">
-            @if(Route::currentRouteName() === 'auth.login')
-            <img src="{{url('img/auth/robin.png')}}" alt="Robin esquivando un ataque enemigo">
+            @if(Route::currentRouteName() === 'auth.login-form')
+                <img src="{{url('img/auth/robin.png')}}" alt="Robin esquivando un ataque enemigo">
             @else
-            <img src="{{url('img/auth/iron_man.png')}}" alt="Robin esquivando un ataque enemigo">
+                <img src="{{url('img/auth/iron_man.png')}}" alt="Iron man volando y atacando">
             @endif
         </div>
     </div>
 
     <main id="section-right">
         <h2 class="sr-only">@yield('sectionTitle', 'Ingresar')</h2>
+
+        @if(Session::has('message'))
+            <x-general.notification
+                message="{{Session::get('message')}}"
+                type="{{Session::get('message_type') ?? 'is-danger'}}"></x-general.notification>
+        @endif
 
         @yield('content')
     </main>

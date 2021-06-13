@@ -3,7 +3,7 @@
 @section('sectionTitle', 'Ingresar')
 
 @section('content')
-    <p>¿Ya tienes una cuenta? <a href="{{route('auth.login')}}" class="is-block">Ingresar</a></p>
+    <p>¿Ya tienes una cuenta? <a href="{{route('auth.login-form')}}" class="is-block">Ingresar</a></p>
 
     <form action="#" method="POST">
         <div class="field">
@@ -59,13 +59,13 @@
         </div>
 
         <div class="field">
-            <label class="label" for="repeat_password-input">Repetir contraseña</label>
+            <label class="label" for="password_confirmation-input">Repetir contraseña</label>
             <div class="control">
                 <input
-                    name="repeat_password"
+                    name="password_confirmation"
                     class="input"
                     type="password"
-                    id="repeat_password-input"
+                    id="password_confirmation-input"
                     placeholder="Por ejemplo, ********">
             </div>
 {{--            <p class="help">This is a help text</p>--}}
