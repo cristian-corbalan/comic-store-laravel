@@ -50,7 +50,7 @@ $filter-width: 280px;
     border: 0;
 }
 
-.notification-general{
+.notification-general {
     margin-bottom: 0 !important;
 }
 
@@ -236,6 +236,8 @@ main {
 // TODO Home / Banner
 
 #banner {
+    padding: 1rem;
+
     > div {
         overflow: hidden;
         border-radius: 15px;
@@ -335,17 +337,18 @@ article.comic-item {
                 margin-bottom: .5rem;
             }
 
-            &:last-of-type {
-                font-weight: bold;
-                height: 3.2rem;
-                min-height: 3.2rem;
-                width: 220px;
-                overflow: hidden;
+        }
 
-                &:hover {
-                    overflow: visible;
-                    height: auto;
-                }
+        h3 {
+            font-weight: bold;
+            height: 3.2rem;
+            min-height: 3.2rem;
+            width: 220px;
+            overflow: hidden;
+
+            &:hover {
+                overflow: visible;
+                height: auto;
             }
         }
     }
@@ -445,10 +448,8 @@ article.comic-item {
                 > div:nth-child(2) {
                     margin-bottom: 1rem;
 
-                    p {
-                        &:last-of-type {
-                            width: 120px;
-                        }
+                    h3 {
+                        width: 120px;
                     }
                 }
 
@@ -469,6 +470,7 @@ article.comic-item {
             }
         }
     }
+
 }
 
 // TODO Comics / Details
@@ -730,7 +732,6 @@ article.comic-item {
             }
         }
     }
-
 }
 
 // TODO Media screen 768px

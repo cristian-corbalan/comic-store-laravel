@@ -5,7 +5,7 @@
     <main>
         {{--Banner--}}
         {{--NOTE: transform to slider--}}
-        <section id="banner">
+        <div id="banner">
             <div>
                 @foreach(config('arrays.homeBannerImages') as $banner)
                     <a href="{{route($banner["routeName"])}}">
@@ -15,12 +15,12 @@
                     </a>
                 @endforeach
             </div>
-        </section>
+        </div>
 
         {{--Popular products--}}
         {{--NOTE: transform to product carousel--}}
         <section id="popular-products">
-            <p class="title is-5">Comics populares</p>
+            <h2 class="title is-5">Comics populares</h2>
             <ul class="comic-list">
                 @foreach($comics as $comic)
                     <li>
@@ -32,6 +32,8 @@
 
         {{--Pills--}}
         <section id="pills">
+            <h2 class="sr-only">Ventajas</h2>
+
             <ul class="columns">
                 <li class="column">
                     <p class="icon-only"><span class="icon-delivery-truck"></span>Envío</p>

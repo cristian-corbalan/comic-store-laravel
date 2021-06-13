@@ -172,6 +172,9 @@ main section {
   padding: 1rem;
 }
 
+#banner {
+  padding: 1rem;
+}
 #banner > div {
   overflow: hidden;
   border-radius: 15px;
@@ -243,14 +246,14 @@ article.comic-item > div:nth-child(2) p:first-of-type {
   color: rgba(80, 80, 80, 0.6);
   margin-bottom: 0.5rem;
 }
-article.comic-item > div:nth-child(2) p:last-of-type {
+article.comic-item > div:nth-child(2) h3 {
   font-weight: bold;
   height: 3.2rem;
   min-height: 3.2rem;
   width: 220px;
   overflow: hidden;
 }
-article.comic-item > div:nth-child(2) p:last-of-type:hover {
+article.comic-item > div:nth-child(2) h3:hover {
   overflow: visible;
   height: auto;
 }
@@ -323,7 +326,7 @@ article.comic-item > div:last-of-type button:active span, article.comic-item > d
 #comics-list ul.comic-list li article > div:nth-child(2) {
   margin-bottom: 1rem;
 }
-#comics-list ul.comic-list li article > div:nth-child(2) p:last-of-type {
+#comics-list ul.comic-list li article > div:nth-child(2) h3 {
   width: 120px;
 }
 #comics-list ul.comic-list li article > div:last-of-type {

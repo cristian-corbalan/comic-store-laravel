@@ -8,11 +8,11 @@
 
         <div>
             <p>{{$comic->brand->name}}</p>
-            <p>
+            <h3>
                 <a href="{{route('comics.details', ['comic' => $comic->id])}}">
                     {{$comic->title}}
                 </a>
-            </p>
+            </h3>
         </div>
 
         <div>

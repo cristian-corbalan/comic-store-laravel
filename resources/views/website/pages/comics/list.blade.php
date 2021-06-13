@@ -12,7 +12,7 @@
                 data-clip="true"></div>
 
             <div class="modal-content">
-                <p class="title is-4">Filtros</p>
+                <h2 class="title is-4">Filtros</h2>
                 <p>Próximamente</p>
             </div>
 
