@@ -33,7 +33,7 @@
         @auth()
             <a href="#" class="button">Salir</a>
         @else
-            <a href="#" class="button">Ingresar</a>
+            <a href="{{route('auth.login')}}" class="button">Ingresar</a>
         @endauth
     </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComicController;
 use App\Http\Controllers\ControlPanelController;
 use App\Http\Controllers\HomeController;
@@ -21,9 +22,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
+Route::get('/ingresar', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/registrarse', [AuthController::class, 'signUp'])->name('auth.sign-up');
 
 Route::get('/shop/add/', [ShopController::class, 'add'])->name('shop.add');
-
 
 Route::get('/intranet/', [ControlPanelController::class, 'home'])->name('control-panel.home');
 Route::get('/intranet/comics', [ComicController::class, 'controlPanelList'])->name('control-panel.comics.list');

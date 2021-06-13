@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+#logo, .logo {
+  background: url("../img/logo/logo_white.png") no-repeat;
+  width: 90px;
+  height: 50px;
+  font-size: 0;
+  display: block;
+}
+
+a {
+  color: #4A6AFF;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.icon-only {
+  font-size: 0;
+}
+.icon-only span {
+  font-size: 1rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.notification-general {
+  margin-bottom: 0 !important;
+}
+
+#section-left {
+  display: none;
+}
+
+#section-right {
+  background: #F8F7F3;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+}
+#section-right > p {
+  text-align: center;
+  line-height: 1.6em;
+  margin-bottom: 1.5rem;
+}
+#section-right > p a {
+  font-weight: bold;
+  color: #1066BC;
+  transition: 300ms;
+}
+#section-right > p a:hover {
+  color: #4A6AFF;
+}
+#section-right .field {
+  margin-bottom: 1.5625rem;
+}
+#section-right form {
+  width: 100%;
+  max-width: 352px;
+}
+#section-right form label {
+  font-weight: 400;
+}
+#section-right form button {
+  margin: auto;
+  display: block;
+  width: 100%;
+  max-width: 352px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background: #1066BC;
+  color: #FFFFFF;
+  transition: 300ms;
+  border-radius: 8px;
+  border: none;
+}
+#section-right form button:hover, #section-right form button:active {
+  background: #4A6AFF;
+}
+
+@media screen and (min-width: 768px) {
+  #container-all {
+    display: flex;
+  }
+
+  #section-left {
+    width: 50%;
+    background: #333333;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 3rem 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  #section-left h1 {
+    margin: auto auto 1rem;
+  }
+  #section-left p:first-of-type {
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  #section-left p:last-of-type {
+    max-width: 450px;
+    margin: auto auto 1rem;
+  }
+  #section-left img {
+    max-height: 300px;
+  }
+
+  #section-right {
+    width: 50%;
+  }
+}
+
+/*# sourceMappingURL=auth.css.map */

@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+$black: #333333;
+$black-gray: #505050;
+$white: #FFFFFF;
+$brown: #A58E7F;
+$brown-dark: #6C584C;
+$blue: #4A6AFF;
+$blue-dark: #1066BC;
+$yellow: #FED049;
+$bg-main: #F8F7F3;
+
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-full-hd: 1408px;
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#logo, .logo {
+    background: url('../img/logo/logo_white.png') no-repeat;
+    width: 90px;
+    height: 50px;
+    font-size: 0;
+    display: block;
+}
+
+//p,
+//h1,
+//h2,
+//h3,
+//h4,
+//h5,
+//h6 {
+//    color: $black-gray;
+//}
+
+a {
+    color: $blue;
+}
+
+// TODO Classes
+
+.bold {
+    font-weight: bold;
+}
+
+.icon-only {
+    font-size: 0;
+
+    span {
+        font-size: 1rem;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.notification-general {
+    margin-bottom: 0 !important;
+}
+
+#section-left {
+    display: none;
+}
+
+#section-right {
+    background: $bg-main;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+
+    > p {
+        text-align: center;
+        line-height: 1.6em;
+        margin-bottom: 1.5rem;
+
+        a {
+            font-weight: bold;
+            color: $blue-dark;
+            transition: 300ms;
+
+            &:hover{
+                color: $blue;
+            }
+        }
+    }
+
+    .field {
+        margin-bottom: 1.5625rem;
+    }
+
+    form {
+        width: 100%;
+        max-width: 352px;
+
+        label {
+            font-weight: 400;
+        }
+
+        button {
+            margin: auto;
+            display: block;
+            width: 100%;
+            max-width: 352px;
+            text-transform: uppercase;
+            font-weight: bold;
+            background: $blue-dark;
+            color: $white;
+            transition: 300ms;
+            border-radius: 8px;
+            border: none;
+
+            &:hover, &:active {
+                background: $blue;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+    #container-all {
+        display: flex;
+    }
+
+    #section-left {
+        width: 50%;
+        background: $black;
+        color: $white;
+        text-align: center;
+        padding: 3rem 1rem 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        h1{
+            margin: auto auto 1rem;
+        }
+
+        p{
+          &:first-of-type{
+              font-weight: bold;
+              font-size: 1.6rem;
+              margin-bottom: 1rem;
+          }
+
+            &:last-of-type{
+                max-width: 450px;
+                margin: auto auto 1rem;
+            }
+        }
+
+        img{
+            max-height: 300px;
+        }
+    }
+
+    #section-right {
+        width: 50%;
+
+    }
+}
