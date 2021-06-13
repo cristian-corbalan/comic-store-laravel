@@ -19,26 +19,51 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+// Web site
 Route::get('/', [HomeController::class, 'home'])->name('home');
-
-Route::get('/ingresar', [AuthController::class, 'loginForm'])->name('auth.login-form');
-Route::post('/ingresar', [AuthController::class, 'login'])->name('auth.login');
-Route::get('/salir', [AuthController::class, 'logOut'])->name('auth.log-out');
-Route::get('/registrarse', [AuthController::class, 'signUpForm'])->name('auth.sign-up-form');
-Route::post('/registrarse', [AuthController::class, 'signUp'])->name('auth.sign-up');
-
-Route::get('/shop/add/', [ShopController::class, 'add'])->name('shop.add');
-
-Route::get('/intranet/', [ControlPanelController::class, 'home'])->name('control-panel.home');
-Route::get('/intranet/comics', [ComicController::class, 'controlPanelList'])->name('control-panel.comics.list');
-Route::get('/intranet/comics/nuevo', [ComicController::class, 'controlPanelFormNew'])->name('control-panel.comics.form');
-Route::get('/intranet/comics/{comic}/editar', [ComicController::class, 'controlPanelFormEdit'])->name('control-panel.comics.edit');
-Route::get('/intranet/users', [UserController::class, 'controlPanelList'])->name('control-panel.users.list');
-
 Route::get('/comics', [ComicController::class, 'websiteList'])->name('comics.list');
 Route::get('/comics/{comic}', [ComicController::class, 'websiteDetails'])->name('comics.details');
 
-Route::post('/comics/nuevo', [ComicController::class, 'new'])->name('comics.new');
-Route::delete('/comics/{comic}/eliminar', [ComicController::class, 'delete'])->name('comics.delete');
-Route::put('/comics/{comic}/editar', [ComicController::class, 'edit'])->name('comics.edit');
+// Auth
+Route::middleware(['guest'])->group(function () {
+
+    Route::get('/ingresar', [AuthController::class, 'loginForm'])
+        ->name('auth.login-form');
+
+    Route::get('/registrarse', [AuthController::class, 'signUpForm'])
+        ->name('auth.sign-up-form');
+
+    Route::post('/ingresar', [AuthController::class, 'login'])
+        ->name('auth.login');
+
+    Route::post('/registrarse', [AuthController::class, 'signUp'])
+        ->name('auth.sign-up');
+});
+
+Route::get('/salir', [AuthController::class, 'logOut'])
+    ->name('auth.log-out')
+    ->middleware(['auth']);
+
+// Shop
+
+Route::get('/shop/add/', [ShopController::class, 'add'])->name('shop.add')
+    ->middleware(['auth']);
+
+
+// Control Panel
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/intranet/', [ControlPanelController::class, 'home'])->name('control-panel.home');
+    Route::get('/intranet/comics', [ComicController::class, 'controlPanelList'])->name('control-panel.comics.list');
+    Route::get('/intranet/comics/nuevo', [ComicController::class, 'controlPanelFormNew'])->name('control-panel.comics.form');
+    Route::get('/intranet/comics/{comic}/editar', [ComicController::class, 'controlPanelFormEdit'])->name('control-panel.comics.edit');
+    Route::get('/intranet/users', [UserController::class, 'controlPanelList'])->name('control-panel.users.list');
+});
+
+// Comic CRUD
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/comics/nuevo', [ComicController::class, 'new'])->name('comics.new');
+    Route::delete('/comics/{comic}/eliminar', [ComicController::class, 'delete'])->name('comics.delete');
+    Route::put('/comics/{comic}/editar', [ComicController::class, 'edit'])->name('comics.edit');
+});
