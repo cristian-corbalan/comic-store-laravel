@@ -1,8 +1,6 @@
-#Comic store con Laravel
+# Comic store con Laravel
 
-##Contenido
-
----
+## Contenido
 
 Este proyecto es una tienda online de comics, con la sección de panel de control.
 
@@ -10,8 +8,6 @@ Todo realizado con [Laravel](https://laravel.com/)
 
 
 ## Instalación
-
----
 
 1. Dentro de la carpeta donde tienes alojado el proyecto tienes que ejecutar el siguiente comando
 
