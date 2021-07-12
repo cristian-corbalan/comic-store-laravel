@@ -45,7 +45,7 @@ DB_PASSWORD=
 php artisan migrate --seed
 ~~~ 
 
-5. Y para finalizar es necesario **recrear el symlink** para el storage. Para esto hay que **ejecutar el siguiente comando** de Artisan
+7. Y para finalizar es necesario **recrear el symlink** para el storage. Para esto hay que **ejecutar el siguiente comando** de Artisan
 
 ~~~ 
 php artisan storage:link
