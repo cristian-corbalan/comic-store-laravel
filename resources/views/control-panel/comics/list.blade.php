@@ -1,3 +1,7 @@
+@php
+    /** @var array $formParams */
+@endphp
+
 @extends('layouts.control-panel')
 
 @section('sectionTitle', 'Comics')
@@ -14,7 +18,30 @@
 
     <div class="table-container-all">
         <header>
-            <h2>Listado de comics</h2>
+            <h2 class="sr-only">Listado de comics</h2>
+            <form action="{{route('control-panel.comics.list')}}" class="search-form">
+                <div class="field has-addons">
+                    <div class="control">
+                        <label for="search-input" class="sr-only">Buscar un comic</label>
+
+                        <input
+                            class="input"
+                            type="text"
+                            name="title"
+                            id="search-input"
+                            placeholder="Buscar un comic"
+                            value="{{ $formParams['title'] ?? null }}"/>
+                    </div>
+                    <div class="control">
+                        <button class="button">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </form>
+            @if($comics->lastPage() > 1)
+                <x-general.pagination :items="$comics"></x-general.pagination>
+            @endif
         </header>
 
         <div class="table-container">
@@ -52,7 +79,8 @@
                         </td>
                         <td>
                             <ul>
-                                <li><a href="{{route('control-panel.comics.edit',['comic' => $comic->id])}}" class="icon-only"><span class="icon-edit"></span>Editar</a></li>
+                                <li><a href="{{route('control-panel.comics.edit',['comic' => $comic->id])}}"
+                                       class="icon-only"><span class="icon-edit"></span>Editar</a></li>
 
                                 <li>
                                     <form action="{{route('comics.delete', ['comic' => $comic->id])}}" method="POST">

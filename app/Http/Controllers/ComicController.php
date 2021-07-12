@@ -11,6 +11,7 @@ use App\Models\Character;
 use App\Models\Comic;
 use App\Models\Genre;
 use App\Models\Image;
+use http\Env\Request;
 use Illuminate\Http\RedirectResponse;
 
 class ComicController extends Controller
@@ -29,12 +30,20 @@ class ComicController extends Controller
         return view('website.pages.comics.details', compact('comic'));
     }
 
-    public function controlPanelList()
+    public function controlPanelList(\Illuminate\Http\Request $request)
     {
-        $comics = Comic::with('cover', 'brand')->get();
+        $comicsQuery = Comic::with('cover', 'brand');
+        $formParams = [];
 
+        if($request->query('title')) {
+            $comicsQuery->where('title', 'like', '%' . $request->query('title') . '%');
 
-        return view('control-panel.comics.list', compact('comics'));
+            $formParams['title'] = $request->query('title');
+        }
+
+        $comics = $comicsQuery->paginate(10)->withQueryString();
+
+        return view('control-panel.comics.list', compact('comics', 'formParams'));
     }
 
     public function controlPanelFormNew()
