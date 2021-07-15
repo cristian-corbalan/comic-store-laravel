@@ -53,14 +53,15 @@
 
         <ul>
             @foreach(config('arrays.websiteNavLinks') as $link)
-                @if(isset($link['authRequired']))
-                    @auth
+                @if(!array_key_exists ('can', $link) || (array_key_exists ('can', $link) && Auth::user()->can($link['can'])))
+                    @if(isset($link['authRequired']))
+                        @auth
+                            <li><a href="{{route($link['routeName'])}}">{{$link['text']}}</a></li>
+                        @endauth
+                    @else
                         <li><a href="{{route($link['routeName'])}}">{{$link['text']}}</a></li>
-                    @endauth
-                @else
-                    <li><a href="{{route($link['routeName'])}}">{{$link['text']}}</a></li>
+                    @endif
                 @endif
-
             @endforeach
         </ul>
     </nav>

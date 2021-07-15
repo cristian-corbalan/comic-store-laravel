@@ -16,6 +16,7 @@ return [
             'routeName' => 'control-panel.users.list',
             'text' => 'Usuarios',
             'iconClass' => 'icon-users',
+            'can' => 'view users',
         ],
     ],
     'websiteNavLinks' => [
@@ -30,7 +31,8 @@ return [
         [
             'routeName' => 'control-panel.home',
             'text' => 'Intranet',
-            'authRequired' => true
+            'authRequired' => true,
+            'can' => 'view control panel',
         ],
     ],
     'homeBannerImages' => [

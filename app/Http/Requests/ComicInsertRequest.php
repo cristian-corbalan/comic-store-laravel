@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ComicInsertRequest extends FormRequest
 {
@@ -11,10 +12,10 @@ class ComicInsertRequest extends FormRequest
      *
      * @return bool
      */
-//    public function authorize()
-//    {
-//        return false;
-//    }
+    public function authorize()
+    {
+        return Auth::user()->can('create comics');
+    }
 
     /**
      * Get the validation rules that apply to the request.

@@ -46,6 +46,8 @@ class AuthController extends Controller
 
         $user = User::create($credentials);
 
+        $user->assignRole('default');
+
         $credentials = $request->only(['password', 'email']);
 
         if (!auth()->attempt($credentials)) {

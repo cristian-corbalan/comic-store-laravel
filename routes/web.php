@@ -8,17 +8,6 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // Web site
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/comics', [ComicController::class, 'websiteList'])->name('comics.list');
@@ -52,18 +41,21 @@ Route::get('/shop/add/', [ShopController::class, 'add'])->name('shop.add')
 
 // Control Panel
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/intranet/', [ControlPanelController::class, 'home'])->name('control-panel.home');
-    Route::get('/intranet/comics', [ComicController::class, 'controlPanelList'])->name('control-panel.comics.list');
-    Route::get('/intranet/comics/nuevo', [ComicController::class, 'controlPanelFormNew'])->name('control-panel.comics.form');
-    Route::get('/intranet/comics/{comic}/editar', [ComicController::class, 'controlPanelFormEdit'])->name('control-panel.comics.edit');
-    Route::get('/intranet/users', [UserController::class, 'controlPanelList'])->name('control-panel.users.list');
+Route::prefix('/intranet')->name('control-panel.')->group(function () {
+    Route::middleware(['access.control-panel'])->group(function () {
+        Route::get('/', [ControlPanelController::class, 'home'])->name('home');
+        Route::get('/comics', [ComicController::class, 'controlPanelList'])->name('comics.list');
+        Route::get('/comics/nuevo', [ComicController::class, 'controlPanelFormNew'])->name('comics.form');
+        Route::get('/comics/{comic}/editar', [ComicController::class, 'controlPanelFormEdit'])->name('comics.edit');
+        Route::get('/users', [UserController::class, 'controlPanelList'])->name('users.list');
+    });
 });
 
 // Comic CRUD
-
-Route::middleware(['auth'])->group(function () {
-    Route::post('/comics/nuevo', [ComicController::class, 'new'])->name('comics.new');
-    Route::delete('/comics/{comic}/eliminar', [ComicController::class, 'delete'])->name('comics.delete');
-    Route::put('/comics/{comic}/editar', [ComicController::class, 'edit'])->name('comics.edit');
+Route::prefix('/comics')->name('comics.')->group(function () {
+    Route::middleware(['shop-manager'])->group(function () {
+        Route::post('/nuevo', [ComicController::class, 'new'])->name('new');
+        Route::delete('/{comic}/eliminar', [ComicController::class, 'delete'])->name('delete');
+        Route::put('/{comic}/editar', [ComicController::class, 'edit'])->name('edit');
+    });
 });

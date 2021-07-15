@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ComicDeleteRequest;
 use App\Http\Requests\ComicInsertRequest;
 use App\Http\Requests\ComicUpdateRequest;
 use App\Models\Artist;
@@ -11,8 +12,8 @@ use App\Models\Character;
 use App\Models\Comic;
 use App\Models\Genre;
 use App\Models\Image;
-use http\Env\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class ComicController extends Controller
 {
@@ -30,7 +31,7 @@ class ComicController extends Controller
         return view('website.pages.comics.details', compact('comic'));
     }
 
-    public function controlPanelList(\Illuminate\Http\Request $request)
+    public function controlPanelList(Request $request)
     {
         $comicsQuery = Comic::with('cover', 'brand');
         $formParams = [];
@@ -104,7 +105,7 @@ class ComicController extends Controller
             ->with('message_type', 'is-info');
     }
 
-    public function delete(Comic $comic): RedirectResponse
+    public function delete(ComicDeleteRequest $request,Comic $comic): RedirectResponse
     {
         $comic->delete();
 
