@@ -109,18 +109,13 @@ class ComicController extends Controller
     {
         $comic->delete();
 
-        $comic->genres()->detach();
-        $comic->characters()->detach();
-        $comic->authors()->detach();
-        $comic->artists()->detach();
-
         return redirect()
             ->route('control-panel.comics.list')
             ->with('message', 'La comic se elimino con éxito.')
             ->with('message_type', 'is-info');
     }
 
-    public function edit(ComicUpdateRequest $request, Comic $comic)
+    public function edit(ComicUpdateRequest $request, Comic $comic): RedirectResponse
     {
         $data = $request->only(['title', 'synopsis', 'number_pages', 'price', 'discount', 'stock', 'publication_date', 'brand_id', 'genres', 'characters', 'authors', 'artists']);
 
