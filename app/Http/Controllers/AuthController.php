@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignUpRequest;
-use App\Models\User;
+use App\Repositories\UserRepository;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    protected $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     public function loginForm()
     {
         return view('authentication.login');
@@ -44,9 +50,7 @@ class AuthController extends Controller
 
         $credentials['password'] = Hash::make($credentials["password"]);
 
-        $user = User::create($credentials);
-
-        $user->assignRole('default');
+        $user = $this->userRepository->createDefaultUser($credentials);
 
         $credentials = $request->only(['password', 'email']);
 

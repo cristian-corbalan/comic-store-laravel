@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Repositories\UserRepository;
 
 class UserController extends Controller
 {
-    public function controlPanelList(){
-        $users = User::with('profileImg')->get();
+    protected $userRepository;
+
+     public function __construct(UserRepository $userRepository){
+         $this->userRepository = $userRepository;
+     }
+
+    public function controlPanelList()
+    {
+        $users = $this->userRepository->getAll();
 
         return view('control-panel.users.list', compact('users'));
     }
