@@ -7,6 +7,9 @@ use App\Repositories\ArtistRepository;
 
 class ArtistService implements ArtistRepository
 {
+    /**
+     * @inheritDoc
+     */
     public function getAll(){
 
         return Artist::all();

@@ -12,19 +12,39 @@ use App\Repositories\CharacterRepository;
 use App\Repositories\ComicRepository;
 use App\Repositories\GenreRepository;
 use App\Repositories\ImageRepository;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ComicController extends Controller
 {
+    /** @var ArtistRepository */
     protected $artistRepository;
+    /** @var AuthorRepository */
     protected $authorRepository;
+    /** @var BrandRepository */
     protected $brandRepository;
+    /** @var CharacterRepository */
     protected $characterRepository;
+    /** @var ComicRepository */
     protected $comicRepository;
+    /** @var GenreRepository */
     protected $genreRepository;
+    /** @var ImageRepository */
     protected $imageRepository;
 
+    /**
+     * ComicController constructor.
+     * @param ArtistRepository $artistRepository
+     * @param AuthorRepository $authorRepository
+     * @param BrandRepository $brandRepository
+     * @param CharacterRepository $characterRepository
+     * @param ComicRepository $comicRepository
+     * @param GenreRepository $genreRepository
+     * @param ImageRepository $imageRepository
+     */
     public function __construct(
         ArtistRepository $artistRepository,
         AuthorRepository $authorRepository,
@@ -44,13 +64,24 @@ class ComicController extends Controller
         $this->imageRepository = $imageRepository;
     }
 
+    /**
+     * View with the comics listing of the website.
+     *
+     * @return Application|Factory|View
+     */
     public function websiteList()
     {
-        $comics = $this->comicRepository->getAll([]);
+        $comics = $this->comicRepository->getAll([], 15);
 
         return view('website.pages.comics.list', compact('comics'));
     }
 
+    /**
+     * View with comic details.
+     *
+     * @param $comicId
+     * @return Application|Factory|View
+     */
     public function websiteDetails($comicId)
     {
         $comic = $this->comicRepository->getByPk($comicId);
@@ -58,6 +89,12 @@ class ComicController extends Controller
         return view('website.pages.comics.details', compact('comic'));
     }
 
+    /**
+     * View with the comics listing of the control panel.
+     *
+     * @param Request $request
+     * @return Application|Factory|View
+     */
     public function controlPanelList(Request $request)
     {
         $formParams = [];
@@ -65,11 +102,16 @@ class ComicController extends Controller
         if ($request->query('title'))
             $formParams['title'] = $request->query('title');
 
-        $comics = $this->comicRepository->getAll($formParams);
+        $comics = $this->comicRepository->getAll($formParams, null);
 
         return view('control-panel.comics.list', compact('comics', 'formParams'));
     }
 
+    /**
+     * View with the form to create a new comic.
+     *
+     * @return Application|Factory|View
+     */
     public function controlPanelFormNew()
     {
         $artists = $this->artistRepository->getAll();
@@ -81,6 +123,12 @@ class ComicController extends Controller
         return view('control-panel.comics.form', compact('brands', 'genres', 'characters', 'authors', 'artists'));
     }
 
+    /**
+     * View with the form to edit an existing comic.
+     *
+     * @param int $comicId
+     * @return Application|Factory|View
+     */
     public function controlPanelFormEdit(int $comicId)
     {
         $comic = $this->comicRepository->getByPk($comicId);
@@ -95,6 +143,12 @@ class ComicController extends Controller
         return view('control-panel.comics.form', compact('comic', 'brands', 'genres', 'characters', 'authors', 'artists'));
     }
 
+    /**
+     * Create a new comic in the database.
+     *
+     * @param ComicInsertRequest $request
+     * @return RedirectResponse
+     */
     public function new(ComicInsertRequest $request): RedirectResponse
     {
         $data = $request->only(['title', 'synopsis', 'number_pages', 'price', 'discount', 'stock', 'publication_date', 'brand_id', 'genres', 'characters', 'authors', 'artists']);
@@ -115,9 +169,16 @@ class ComicController extends Controller
         return redirect()
             ->route('control-panel.comics.list')
             ->with('message', 'La comic se añadió con éxito.')
-            ->with('message_type', 'is-info');
+            ->with('message_type', 'is-success');
     }
 
+    /**
+     * Edit an existing comic in the database.
+     *
+     * @param ComicUpdateRequest $request
+     * @param int $comicId
+     * @return RedirectResponse
+     */
     public function edit(ComicUpdateRequest $request, int $comicId): RedirectResponse
     {
         $data = $request->only(['title', 'synopsis', 'number_pages', 'price', 'discount', 'stock', 'publication_date', 'brand_id', 'genres', 'characters', 'authors', 'artists']);
@@ -147,16 +208,23 @@ class ComicController extends Controller
         return redirect()
             ->route('control-panel.comics.list')
             ->with('message', 'La comic se añadió con éxito.')
-            ->with('message_type', 'is-info');
+            ->with('message_type', 'is-success');
     }
 
-    public function delete(ComicDeleteRequest $request, $comicId): RedirectResponse
+    /**
+     * Deletes a comic from the database.
+     *
+     * @param ComicDeleteRequest $request
+     * @param int $comicId
+     * @return RedirectResponse
+     */
+    public function delete(ComicDeleteRequest $request, int $comicId): RedirectResponse
     {
         $this->comicRepository->delete($comicId);
 
         return redirect()
             ->route('control-panel.comics.list')
             ->with('message', 'La comic se elimino con éxito.')
-            ->with('message_type', 'is-info');
+            ->with('message_type', 'is-success');
     }
 }

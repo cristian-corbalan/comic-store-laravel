@@ -7,6 +7,9 @@ use App\Repositories\UserRepository;
 
 class UserService implements UserRepository
 {
+    /**
+     * @inheritDoc
+     */
     public function createDefaultUser($data): User
     {
         $user = User::create($data);
@@ -16,6 +19,9 @@ class UserService implements UserRepository
         return $user;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getAll(){
         return User::with('profileImg')->get();
     }

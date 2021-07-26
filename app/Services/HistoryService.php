@@ -8,6 +8,9 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class HistoryService implements HistoryRepository
 {
+    /**
+     * @inheritDoc
+     */
     public function getAll(int $quantity = 12): LengthAwarePaginator
     {
         return History::with('user')->paginate($quantity);

@@ -23,6 +23,9 @@ class ImageService implements ImageRepository
         return Image::create($imgData);
     }
 
+    /**
+     * @inheritDoc
+     */
     public function update(array $data, int $fk): Image
     {
         $image = Image::findOrFail($fk);
@@ -32,6 +35,9 @@ class ImageService implements ImageRepository
         return $image;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function upload(UploadedFile $cover): string
     {
         $path = $cover->store('img/comics', 'public');

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ComicService implements ComicRepository
 {
+    /**
+     * @inheritDoc
+     */
     public function create(array $data, array $genres, array $characters, array $authors, array $artists): Comic
     {
         $comic = Comic::create($data);
@@ -20,6 +23,9 @@ class ComicService implements ComicRepository
         return $comic;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function update(array $data, int $pk, array $genres, array $characters, array $authors, array $artists): Comic
     {
         $comic = Comic::findOrFail($pk);
@@ -34,11 +40,17 @@ class ComicService implements ComicRepository
         return $comic;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function delete($pk): void
     {
         Comic::findOrFail($pk)->delete();
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getAll(array $searchParams = [], int $quantity = 12): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         $comicQuery = Comic::with('cover', 'brand');
@@ -50,6 +62,9 @@ class ComicService implements ComicRepository
         return $comicQuery->paginate($quantity)->withQueryString();
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getByPk(int $pk): ?Comic
     {
         return Comic::findOrFail($pk);

@@ -7,6 +7,9 @@ use App\Repositories\BrandRepository;
 
 class BrandService implements BrandRepository
 {
+    /**
+     * @inheritDoc
+     */
     public function getAll(){
         return Brand::all();
     }

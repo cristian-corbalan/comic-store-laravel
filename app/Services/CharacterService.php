@@ -7,6 +7,9 @@ use App\Repositories\CharacterRepository;
 
 class CharacterService implements CharacterRepository
 {
+    /**
+     * @inheritDoc
+     */
     public function getAll(){
         return Character::all();
     }
