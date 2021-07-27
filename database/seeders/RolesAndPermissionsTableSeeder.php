@@ -86,6 +86,14 @@ class RolesAndPermissionsTableSeeder extends Seeder
             ],
             [
                 'id' => 5,
+                'name' => 'restore comic',
+                'description' => 'Permiso para restaurar un comic eliminado',
+                'guard_name' => 'web',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 6,
                 'name' => 'view users',
                 'description' => 'Permiso para visualizar los usuarios de la tienda',
                 'guard_name' => 'web',
@@ -116,6 +124,10 @@ class RolesAndPermissionsTableSeeder extends Seeder
                 'role_id' => 1,
                 'permission_id' => 5,
             ],
+            [
+                'role_id' => 1,
+                'permission_id' => 6,
+            ],
             // Admin
             [
                 'role_id' => 2,
@@ -137,6 +149,10 @@ class RolesAndPermissionsTableSeeder extends Seeder
                 'role_id' => 2,
                 'permission_id' => 5,
             ],
+            [
+                'role_id' => 2,
+                'permission_id' => 6,
+            ],
             // Shop Manager
             [
                 'role_id' => 4,
@@ -153,6 +169,10 @@ class RolesAndPermissionsTableSeeder extends Seeder
             [
                 'role_id' => 4,
                 'permission_id' => 4,
+            ],
+            [
+                'role_id' => 4,
+                'permission_id' => 5,
             ],
         ]);
 

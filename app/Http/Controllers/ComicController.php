@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ComicDeleteRequest;
 use App\Http\Requests\ComicInsertRequest;
+use App\Http\Requests\ComicRestoreRequest;
 use App\Http\Requests\ComicUpdateRequest;
 use App\Repositories\ArtistRepository;
 use App\Repositories\AuthorRepository;
@@ -102,7 +103,7 @@ class ComicController extends Controller
         if ($request->query('title'))
             $formParams['title'] = $request->query('title');
 
-        $comics = $this->comicRepository->getAll($formParams, null);
+        $comics = $this->comicRepository->getAllWithTrashed($formParams, 10);
 
         return view('control-panel.comics.list', compact('comics', 'formParams'));
     }
@@ -211,6 +212,25 @@ class ComicController extends Controller
             ->with('message_type', 'is-success');
     }
 
+
+    /**
+     * Restore a deleted comic from the database
+     *
+     * @param ComicRestoreRequest $request
+     * @param int $comicId
+     * @return RedirectResponse
+     */
+    public function restore(ComicRestoreRequest $request, int $comicId): RedirectResponse
+    {
+
+        $this->comicRepository->restore($comicId);
+
+        return redirect()
+            ->back()
+            ->with('message', 'La comic se restauro con éxito.')
+            ->with('message_type', 'is-success');
+    }
+
     /**
      * Deletes a comic from the database.
      *
@@ -223,7 +243,7 @@ class ComicController extends Controller
         $this->comicRepository->delete($comicId);
 
         return redirect()
-            ->route('control-panel.comics.list')
+            ->back()
             ->with('message', 'La comic se elimino con éxito.')
             ->with('message_type', 'is-success');
     }

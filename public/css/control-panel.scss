@@ -470,7 +470,7 @@ main {
         ul {
             display: flex;
 
-            li {
+            li, >div {
                 width: 50%;
                 padding: 1rem 1.5rem;
 
@@ -489,21 +489,29 @@ main {
                     border: none;
                     color: #f14668 ;
 
-                    span:last-of-type{
+                    span.icon-trash-open{
                         display: none;
+                    }
+
+                    span.icon-history{
+                        color: #309c56;
                     }
 
                     &:hover{
                         cursor: pointer;
 
                         span{
-                            &:first-of-type{
+                            &.icon-trash{
                                 display: none;
                             }
 
-                            &:last-of-type{
+                            &.icon-trash-open{
                                 display: block;
                             }
+                        }
+
+                        span.icon-history{
+                            color: #48e77f;
                         }
                     }
                 }

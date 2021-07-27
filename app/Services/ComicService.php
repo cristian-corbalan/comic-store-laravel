@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Comic;
 use App\Repositories\ComicRepository;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
 class ComicService implements ComicRepository
@@ -51,9 +52,24 @@ class ComicService implements ComicRepository
     /**
      * @inheritDoc
      */
-    public function getAll(array $searchParams = [], int $quantity = 12): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    public function getAll(array $searchParams = [], ?int $quantity = 12): LengthAwarePaginator
     {
-        $comicQuery = Comic::with('cover', 'brand');
+        $comicQuery = Comic::with('cover', 'brand', 'genres');
+
+        if (isset($searchParams['title'])) {
+            $comicQuery->where('title', 'like', '%' . $searchParams['title'] . '%');
+        }
+
+        return $comicQuery->paginate($quantity)->withQueryString();
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function getAllWithTrashed(array $searchParams = [], ?int $quantity = 12): LengthAwarePaginator
+    {
+        $comicQuery = Comic::with('cover', 'brand')->withTrashed();
 
         if (isset($searchParams['title'])) {
             $comicQuery->where('title', 'like', '%' . $searchParams['title'] . '%');
@@ -68,5 +84,13 @@ class ComicService implements ComicRepository
     public function getByPk(int $pk): ?Comic
     {
         return Comic::findOrFail($pk);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function restore(int $pk): void
+    {
+        Comic::withTrashed()->where('id', $pk)->restore();
     }
 }

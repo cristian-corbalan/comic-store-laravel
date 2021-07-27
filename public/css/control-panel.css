@@ -342,32 +342,38 @@ main {
 #content.comic-list td ul {
   display: flex;
 }
-#content.comic-list td ul li {
+#content.comic-list td ul li, #content.comic-list td ul > div {
   width: 50%;
   padding: 1rem 1.5rem;
 }
-#content.comic-list td ul li a span {
+#content.comic-list td ul li a span, #content.comic-list td ul > div a span {
   font-size: 1.2rem;
 }
-#content.comic-list td ul li:first-of-type a:hover span {
+#content.comic-list td ul li:first-of-type a:hover span, #content.comic-list td ul > div:first-of-type a:hover span {
   color: #FED049;
 }
-#content.comic-list td ul li:last-of-type button {
+#content.comic-list td ul li:last-of-type button, #content.comic-list td ul > div:last-of-type button {
   background: none;
   border: none;
   color: #f14668;
 }
-#content.comic-list td ul li:last-of-type button span:last-of-type {
+#content.comic-list td ul li:last-of-type button span.icon-trash-open, #content.comic-list td ul > div:last-of-type button span.icon-trash-open {
   display: none;
 }
-#content.comic-list td ul li:last-of-type button:hover {
+#content.comic-list td ul li:last-of-type button span.icon-history, #content.comic-list td ul > div:last-of-type button span.icon-history {
+  color: #309c56;
+}
+#content.comic-list td ul li:last-of-type button:hover, #content.comic-list td ul > div:last-of-type button:hover {
   cursor: pointer;
 }
-#content.comic-list td ul li:last-of-type button:hover span:first-of-type {
+#content.comic-list td ul li:last-of-type button:hover span.icon-trash, #content.comic-list td ul > div:last-of-type button:hover span.icon-trash {
   display: none;
 }
-#content.comic-list td ul li:last-of-type button:hover span:last-of-type {
+#content.comic-list td ul li:last-of-type button:hover span.icon-trash-open, #content.comic-list td ul > div:last-of-type button:hover span.icon-trash-open {
   display: block;
+}
+#content.comic-list td ul li:last-of-type button:hover span.icon-history, #content.comic-list td ul > div:last-of-type button:hover span.icon-history {
+  color: #48e77f;
 }
 #content.comic-list td.td-title {
   max-width: 300px;

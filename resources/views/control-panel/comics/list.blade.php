@@ -61,7 +61,7 @@
 
                 <tbody>
                 @foreach($comics as $comic)
-                    <tr>
+                    <tr @if($comic->trashed())class="has-background-danger-light" @endif>
                         <td>{{$comic->id}}</td>
                         <td class="td-title">{{$comic->title}}</td>
                         @if($comic->discount)
@@ -79,21 +79,53 @@
                         </td>
                         <td>
                             <ul>
-                                <li><a href="{{route('control-panel.comics.edit',['comic' => $comic->id])}}"
-                                       class="icon-only"><span class="icon-edit"></span>Editar</a></li>
+                                @if(!$comic->trashed())
+                                    <li>
+                                        <a href="{{route('control-panel.comics.edit',['comic' => $comic->id])}}"
+                                           class="icon-only"
+                                           title="Editar {{$comic->title}}"
+                                        >
+                                            <span class="icon-edit"></span>
+                                            Editar {{$comic->title}}
+                                        </a>
+                                    </li>
+                                @else
+                                    <div></div>
+                                @endif
 
                                 <li>
-                                    <form action="{{route('comics.delete', ['comic' => $comic->id])}}" method="POST">
-                                        @csrf
+                                    @if($comic->trashed())
+                                        <form action="{{route('comics.restore', ['comic' => $comic->id])}}"
+                                              method="POST">
+                                            @csrf
 
-                                        @method('DELETE')
+                                            @method('PUT')
 
-                                        <button type="submit" class="icon-only">
-                                            <span class="icon-trash"></span>
-                                            <span class="icon-trash-open"></span>
-                                            Eliminar
-                                        </button>
-                                    </form>
+                                            <button
+                                                type="submit"
+                                                class="icon-only"
+                                                title="Restaurar {{$comic->title}}">
+                                                <span class="icon-history"></span>
+
+                                                Restaurar {{$comic->title}}
+                                            </button>
+                                        </form>
+                                    @else
+                                        <form action="{{route('comics.delete', ['comic' => $comic->id])}}"
+                                              method="POST">
+                                            @csrf
+
+                                            @method('DELETE')
+
+                                            <button type="submit" class="icon-only" title="Eliminar {{$comic->title}}">
+                                                <span class="icon-trash"></span>
+
+                                                <span class="icon-trash-open"></span>
+
+                                                Eliminar {{$comic->title}}
+                                            </button>
+                                        </form>
+                                    @endif
                                 </li>
                             </ul>
                         </td>

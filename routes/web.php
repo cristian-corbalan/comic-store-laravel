@@ -57,5 +57,6 @@ Route::prefix('/comics')->name('comics.')->group(function () {
         Route::post('/nuevo', [ComicController::class, 'new'])->name('new');
         Route::delete('/{comic}/eliminar', [ComicController::class, 'delete'])->name('delete');
         Route::put('/{comic}/editar', [ComicController::class, 'edit'])->name('edit');
+        Route::put('/{comic}/restaurar', [ComicController::class, 'restore'])->name('restore');
     });
 });
