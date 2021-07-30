@@ -72,7 +72,7 @@ class ComicController extends Controller
      */
     public function websiteList()
     {
-        $comics = $this->comicRepository->getAll([], 15);
+        $comics = $this->comicRepository->getAllPaginated([], 15);
 
         return view('website.pages.comics.list', compact('comics'));
     }
@@ -103,7 +103,7 @@ class ComicController extends Controller
         if ($request->query('title'))
             $formParams['title'] = $request->query('title');
 
-        $comics = $this->comicRepository->getAllWithTrashed($formParams, 10);
+        $comics = $this->comicRepository->getAllPaginatedWithTrashed($formParams, 10);
 
         return view('control-panel.comics.list', compact('comics', 'formParams'));
     }

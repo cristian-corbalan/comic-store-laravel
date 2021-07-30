@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $comics = $this->comicRepository->getAll([], 5);
+        $comics = $this->comicRepository->getAllPaginated([], 5);
 
         return view('index', compact('comics'));
     }

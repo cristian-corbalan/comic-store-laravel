@@ -49,10 +49,20 @@ class ComicService implements ComicRepository
         Comic::findOrFail($pk)->delete();
     }
 
+    public function getAll(): array
+    {
+        return Comic::all();
+    }
+
+    public function getAllWithTrashed(): array
+    {
+        return Comic::all()->withTrashed();
+    }
+
     /**
      * @inheritDoc
      */
-    public function getAll(array $searchParams = [], ?int $quantity = 12): LengthAwarePaginator
+    public function getAllPaginated(array $searchParams = [], ?int $quantity = 12): LengthAwarePaginator
     {
         $comicQuery = Comic::with('cover', 'brand', 'genres');
 
@@ -67,7 +77,7 @@ class ComicService implements ComicRepository
     /**
      * @inheritDoc
      */
-    public function getAllWithTrashed(array $searchParams = [], ?int $quantity = 12): LengthAwarePaginator
+    public function getAllPaginatedWithTrashed(array $searchParams = [], ?int $quantity = 12): LengthAwarePaginator
     {
         $comicQuery = Comic::with('cover', 'brand')->withTrashed();
 
