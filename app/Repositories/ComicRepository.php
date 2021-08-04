@@ -42,13 +42,25 @@ interface ComicRepository
     public function delete($id): void;
 
     /**
+     * Returns all the comics in the database
+     * @return Comic[]|Collection
+     */
+    public function getAll();
+
+    /**
+     * Returns all the comics in the database, including the eliminated
+     * @return Comic[]|Collection
+     */
+    public function getAllWithTrashed();
+
+    /**
      *  Returns all the comics in the database, paginated and also with the requested search parameters.
      *
      * @param array $searchParams Receives as an attribute a string in the "tittle" position with the title of the comic book.
      * @param int|null $quantity
      * @return LengthAwarePaginator|Collection|Comic[]
      */
-    public function getAll(array $searchParams, ?int $quantity): LengthAwarePaginator;
+    public function getAllPaginated(array $searchParams, ?int $quantity): LengthAwarePaginator;
 
     /**
      *  Returns all the comics in the database including softly removed, paginated and also with the requested search parameters.
@@ -57,7 +69,7 @@ interface ComicRepository
      * @param int|null $quantity
      * @return LengthAwarePaginator|Collection|Comic[]
      */
-    public function getAllWithTrashed(array $searchParams, ?int $quantity): LengthAwarePaginator;
+    public function getAllPaginatedWithTrashed(array $searchParams, ?int $quantity): LengthAwarePaginator;
 
     /**
      * Search and return a comic in the database through its pk if it exists.
