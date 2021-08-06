@@ -14,7 +14,10 @@ class ComicUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->can('edit comics');
+        if (Auth::user())
+            return Auth::user()->can('edit comics');
+        else
+            return false;
     }
 
     /**

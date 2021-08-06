@@ -12,7 +12,7 @@ class ComicService implements ComicRepository
     /**
      * @inheritDoc
      */
-    public function create(array $data, array $genres, array $characters, array $authors, array $artists): Comic
+    public function create(array $data, array $genres = [], array $characters = [], array $authors = [], array $artists = []): Comic
     {
         $comic = Comic::create($data);
 
@@ -27,7 +27,7 @@ class ComicService implements ComicRepository
     /**
      * @inheritDoc
      */
-    public function update(array $data, int $pk, array $genres, array $characters, array $authors, array $artists): Comic
+    public function update(array $data, int $pk, array $genres = [], array $characters = [], array $authors = [], array $artists = []): Comic
     {
         $comic = Comic::findOrFail($pk);
 
@@ -44,9 +44,13 @@ class ComicService implements ComicRepository
     /**
      * @inheritDoc
      */
-    public function delete($pk): void
+    public function delete($pk)
     {
-        Comic::findOrFail($pk)->delete();
+        $comic = Comic::findOrFail($pk);
+
+        $comic->delete();
+
+        return $comic;
     }
 
     public function getAll()
@@ -94,6 +98,16 @@ class ComicService implements ComicRepository
     public function getByPk(int $pk): ?Comic
     {
         return Comic::findOrFail($pk);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getByPkWithTrashed(int $pk)
+    {
+        return Comic::withTrashed()
+            ->where('id', $pk)
+            ->get();
     }
 
     /**

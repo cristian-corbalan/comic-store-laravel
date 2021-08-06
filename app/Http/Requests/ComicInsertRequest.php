@@ -14,7 +14,10 @@ class ComicInsertRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->can('create comics');
+        if (Auth::user())
+            return Auth::user()->can('create comics');
+        else
+            return false;
     }
 
     /**

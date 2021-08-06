@@ -19,7 +19,7 @@ interface ComicRepository
      * @param array $artists
      * @return Comic
      */
-    public function create(array $data, array $genres, array $characters, array $authors, array $artists): Comic;
+    public function create(array $data, array $genres = [], array $characters = [], array $authors = [], array $artists = []): Comic;
 
     /**
      * Edit the data of a comic book already registered in the database.
@@ -39,7 +39,7 @@ interface ComicRepository
      *
      * @param $id
      */
-    public function delete($id): void;
+    public function delete($id);
 
     /**
      * Returns all the comics in the database
@@ -78,6 +78,13 @@ interface ComicRepository
      * @return Comic|null
      */
     public function getByPk(int $pk):? Comic;
+
+    /**
+     * Search and return a comic including softly removed in the database through its pk if it exists.
+     *
+     * @param int $pk
+     */
+    public function getByPkWithTrashed(int $pk);
 
     /**
      * Restore a deleted comic from the database.

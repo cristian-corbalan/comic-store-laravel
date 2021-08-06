@@ -15,7 +15,10 @@ class ComicDeleteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::user()->can('delete comics');
+        if (Auth::user())
+            return Auth::user()->can('delete comics');
+        else
+            return false;
     }
 
     /**
@@ -26,7 +29,7 @@ class ComicDeleteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'numeric|exists:comics,id'
+            'id' => 'required|numeric|exists:comics,id'
         ];
     }
 

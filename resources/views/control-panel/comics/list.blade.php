@@ -115,6 +115,8 @@
                                               method="POST">
                                             @csrf
 
+                                            <input type="hidden" name="id" value="{{$comic->id}}">
+
                                             @method('DELETE')
 
                                             <button type="submit" class="icon-only" title="Eliminar {{$comic->title}}">
