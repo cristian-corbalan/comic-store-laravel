@@ -16,16 +16,19 @@
         </div>
 
         <div>
-            @if($comic->discount)
-                <p>USD$ {{($comic->price - ($comic->price*$comic->discount/100))  / 100}}</p>
-            @else
-                <p>USD$ {{$comic->price / 100}}</p>
-            @endif
+            <p>USD$ {{$comic->getPrice()}}</p>
 
-            <a href="{{route('shop.add')}}" class="button">
-                Añadir
-                <span class="icon-shopping-cart"></span>
-            </a>
+            @if($comic->stock)
+                <form action="{{route('shop.add')}}">
+                    <input type="hidden" name="product_id" value="{{$comic->id}}">
+                    <button class="button">
+                        Añadir
+                        <span class="icon-shopping-cart"></span>
+                    </button>
+                </form>
+            @else
+                    <button class="button" disabled>Sin stock</button>
+            @endif
         </div>
     </article>
 </div>

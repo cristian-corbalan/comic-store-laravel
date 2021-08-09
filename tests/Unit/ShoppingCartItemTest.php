@@ -62,11 +62,26 @@ class ShoppingCartItemTest extends TestCase
         $this->assertEquals(2500, $subtotal);
     }
 
-    public function getComic(): Comic
+    public function test_get_subtotal_returns_the_price_for_the_quantity_including_discount()
+    {
+        $comic = $this->getComic(50);
+
+        $quantity = 1;
+
+        $this->cartItem->setProduct($comic);
+        $this->cartItem->setQuantity($quantity);
+
+        $subtotal = $this->cartItem->getSubtotal();
+
+        $this->assertEquals(250, $subtotal);
+    }
+
+    public function getComic($discount = 0): Comic
     {
         $comic = new Comic();
         $comic->id = 1;
-        $comic->price = 500;
+        $comic->price = 50000;
+        $comic->discount = $discount;
 
         return $comic;
     }

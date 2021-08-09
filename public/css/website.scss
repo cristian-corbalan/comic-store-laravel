@@ -104,6 +104,40 @@ header {
                 margin-right: .8rem;
             }
         }
+
+        .cart-content {
+            position: relative;
+
+            span.quantity {
+                display: block;
+                background: rgba($blue, .8);
+                color: $white;
+                text-align: center;
+                padding: .2rem;
+                position: absolute;
+                top: -10px;
+                right: calc(50% - 15px);
+                border-radius: 100%;
+                height: 25px;
+                width: 25px;
+                font-size: .8rem;
+            }
+        }
+
+        .cart-link {
+            display: block;
+            padding: .5rem;
+
+            span.icon-shopping-cart {
+                color: $white;
+                font-size: 1.8rem;
+                transition: 300ms;
+
+                &:hover {
+                    color: $yellow;
+                }
+            }
+        }
     }
 
     nav {
@@ -678,6 +712,142 @@ article.comic-item {
                 }
             }
 
+        }
+    }
+}
+
+// TODO Shopping Cart
+
+#main-cart {
+
+    section {
+        background: rgba($white, .6);
+        margin-bottom: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        text-align: center;
+
+        +p{
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+    }
+
+    .subtitle {
+        margin-top: 0;
+        text-align: center;
+    }
+
+    ul {
+        width: 100%;
+        max-width: 700px;
+        margin: auto;
+
+        li {
+            margin-left: -1rem;
+            margin-right: -1rem;
+            position: relative;
+            border-bottom: 1px solid rgba($black-gray, .5);
+            padding: 1.5rem 1rem;
+
+            &:first-of-type {
+                border-top: 1px solid rgba($black-gray, .5);
+
+            }
+
+            h3 {
+                width: 100%;
+                max-width: 80%;
+                margin-bottom: 1.2rem;
+
+                a {
+                    font-weight: bold;
+                    font-size: 1.1rem;
+                }
+
+                + p {
+                    margin-bottom: 1rem;
+                }
+            }
+
+            form {
+                &:first-of-type {
+                    select {
+                        width: 100%;
+                    }
+                }
+
+                &:last-of-type {
+                    button {
+                        position: absolute;
+                        top: 1.5rem;
+                        right: 1rem;
+                        transition: 300ms;
+
+                        span.icon-trash {
+                            color: #f14668;
+                        }
+
+                        &:hover {
+                            span {
+                                color: $white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .total {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .empty{
+        margin: 1.5rem auto;
+        font-size: .8rem;
+        text-align: center;
+    }
+}
+
+#cart-btn {
+    display: flex;
+    justify-content: center;
+
+    button {
+        width: 100%;
+        max-width: 340px;
+    }
+}
+
+// TODO Shopping Cart / Payment Status
+
+#main-payment-status{
+    section{
+        background: rgba($white, .6);
+        padding: 2rem 1rem;
+        text-align: center;
+
+        h2{
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: auto auto;
+            width: 100%;
+            max-width: 700px;
+            &:last-of-type{
+                margin-bottom:  1.5rem;
+            }
         }
     }
 }

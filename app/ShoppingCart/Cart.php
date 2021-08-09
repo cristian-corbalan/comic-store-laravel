@@ -68,6 +68,22 @@ class Cart
     }
 
     /**
+     * Returns the sum of item quantity
+     *
+     * @return int
+     */
+    public function getTotalItems(): int
+    {
+        $total = 0;
+
+        foreach ($this->items as $item) {
+            $total += $item->getQuantity();
+        }
+
+        return $total;
+    }
+
+    /**
      * Empty the cart
      *
      * @return array
@@ -77,9 +93,10 @@ class Cart
         return $this->items[] = [];
     }
 
-    public function setItemQuantity($id, $quantity){
-        foreach ($this->items as $key => $item){
-            if($item->getProduct()->id == $id){
+    public function setItemQuantity($id, $quantity)
+    {
+        foreach ($this->items as $key => $item) {
+            if ($item->getProduct()->id == $id) {
                 $this->items[$key]->setQuantity($quantity);
             }
         }

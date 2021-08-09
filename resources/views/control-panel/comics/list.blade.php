@@ -64,11 +64,7 @@
                     <tr @if($comic->trashed())class="has-background-danger-light" @endif>
                         <td>{{$comic->id}}</td>
                         <td class="td-title">{{$comic->title}}</td>
-                        @if($comic->discount)
-                            <td>${{($comic->price - ($comic->price*$comic->discount/100))  / 100}}</td>
-                        @else
-                            <td>${{$comic->price / 100}}</td>
-                        @endif
+                        <td>{{$comic->getPrice()}}</td>
                         <td>{{$comic->discount ? $comic->discount . '%' : '-'}}</td>
                         <td>{{$comic->stock}}</td>
                         <td>{{$comic->brand->name}}</td>

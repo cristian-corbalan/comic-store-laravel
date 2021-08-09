@@ -130,4 +130,17 @@ class Comic extends Model
     {
         return $this->belongsToMany(Artist::class, 'comics_has_artists');
     }
+
+    /**
+     * Returns the price of the product divided by 100, and if the product has a discount, the discount is also applied.
+     *
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        if ($this->discount)
+            return intval(($this->price - ($this->price * $this->discount / 100)) / 100);
+
+        return intval($this->price / 100);
+    }
 }

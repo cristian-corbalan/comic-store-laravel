@@ -39,7 +39,6 @@ class CartItem
 
     public function getSubtotal()
     {
-        return $this->product->price * $this->quantity;
-
+        return $this->product->getPrice() * $this->quantity;
     }
 }

@@ -35,8 +35,19 @@ Route::get('/salir', [AuthController::class, 'logOut'])
 
 // Shop
 
-Route::get('/shop/add/', [ShopController::class, 'add'])->name('shop.add')
-    ->middleware(['auth']);
+Route::prefix('/shop')->name('shop.')->group(function () {
+    Route::get('/agregar', [ShopController::class, 'add'])->name('add');
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/vaciar', [ShopController::class, 'empty'])->name('empty');
+        Route::get('/carrito', [ShopController::class, 'cart'])->name('cart');
+        Route::get('/pago-confirmado', [ShopController::class, 'paymentConfirmed'])->name('payment.confirmed');
+        Route::get('/pago-pendiente', [ShopController::class, 'paymentPending'])->name('payment.pending');
+        Route::get('/pago-fallido', [ShopController::class, 'paymentFailed'])->name('payment.failed');
+        Route::put('/asignar-cantidad', [ShopController::class, 'setQuantity'])->name('set-quantity');
+        Route::delete('/quitar', [ShopController::class, 'remove'])->name('remove');
+    });
+});
 
 
 // Control Panel

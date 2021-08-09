@@ -113,8 +113,6 @@ class ComicsTest extends TestCase
             ->withAuthAdmin()
             ->putJson('/api/comics/1/editar', $this->editedComic());
 
-        $response->dump();
-
         /*
          * Testeamos que
          *
