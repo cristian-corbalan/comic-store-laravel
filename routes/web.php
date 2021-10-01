@@ -8,17 +8,6 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // Web site
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/comics', [ComicController::class, 'websiteList'])->name('comics.list');
@@ -46,24 +35,39 @@ Route::get('/salir', [AuthController::class, 'logOut'])
 
 // Shop
 
-Route::get('/shop/add/', [ShopController::class, 'add'])->name('shop.add')
-    ->middleware(['auth']);
+Route::prefix('/shop')->name('shop.')->group(function () {
+    Route::get('/agregar', [ShopController::class, 'add'])->name('add');
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/vaciar', [ShopController::class, 'empty'])->name('empty');
+        Route::get('/carrito', [ShopController::class, 'cart'])->name('cart');
+        Route::get('/pago-confirmado', [ShopController::class, 'paymentConfirmed'])->name('payment.confirmed');
+        Route::get('/pago-pendiente', [ShopController::class, 'paymentPending'])->name('payment.pending');
+        Route::get('/pago-fallido', [ShopController::class, 'paymentFailed'])->name('payment.failed');
+        Route::put('/asignar-cantidad', [ShopController::class, 'setQuantity'])->name('set-quantity');
+        Route::delete('/quitar', [ShopController::class, 'remove'])->name('remove');
+    });
+});
 
 
 // Control Panel
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/intranet/', [ControlPanelController::class, 'home'])->name('control-panel.home');
-    Route::get('/intranet/comics', [ComicController::class, 'controlPanelList'])->name('control-panel.comics.list');
-    Route::get('/intranet/comics/nuevo', [ComicController::class, 'controlPanelFormNew'])->name('control-panel.comics.form');
-    Route::get('/intranet/comics/{comic}/editar', [ComicController::class, 'controlPanelFormEdit'])->name('control-panel.comics.edit');
-    Route::get('/intranet/users', [UserController::class, 'controlPanelList'])->name('control-panel.users.list');
+Route::prefix('/intranet')->name('control-panel.')->group(function () {
+    Route::middleware(['access.control-panel'])->group(function () {
+        Route::get('/', [ControlPanelController::class, 'home'])->name('home');
+        Route::get('/comics', [ComicController::class, 'controlPanelList'])->name('comics.list');
+        Route::get('/comics/nuevo', [ComicController::class, 'controlPanelFormNew'])->name('comics.form');
+        Route::get('/comics/{comic}/editar', [ComicController::class, 'controlPanelFormEdit'])->name('comics.edit');
+        Route::get('/users', [UserController::class, 'controlPanelList'])->name('users.list');
+    });
 });
 
 // Comic CRUD
-
-Route::middleware(['auth'])->group(function () {
-    Route::post('/comics/nuevo', [ComicController::class, 'new'])->name('comics.new');
-    Route::delete('/comics/{comic}/eliminar', [ComicController::class, 'delete'])->name('comics.delete');
-    Route::put('/comics/{comic}/editar', [ComicController::class, 'edit'])->name('comics.edit');
+Route::prefix('/comics')->name('comics.')->group(function () {
+    Route::middleware(['shop-manager'])->group(function () {
+        Route::post('/nuevo', [ComicController::class, 'new'])->name('new');
+        Route::delete('/{comic}/eliminar', [ComicController::class, 'delete'])->name('delete');
+        Route::put('/{comic}/editar', [ComicController::class, 'edit'])->name('edit');
+        Route::put('/{comic}/restaurar', [ComicController::class, 'restore'])->name('restore');
+    });
 });

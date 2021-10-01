@@ -37,12 +37,14 @@
 
             <ul>
                 @foreach(config('arrays.controlPanelLinksAdmin') as $link)
-                    <li>
-                        <a href="{{route($link['routeName'])}}">
-                            <span class="{{$link['iconClass']}}"></span>
-                            {{$link['text']}}
-                        </a>
-                    </li>
+                    @if(!array_key_exists ('can', $link) || (array_key_exists ('can', $link) && Auth::user()->can($link['can'])))
+                        <li>
+                            <a href="{{route($link['routeName'])}}">
+                                <span class="{{$link['iconClass']}}"></span>
+                                {{$link['text']}}
+                            </a>
+                        </li>
+                    @endif
                 @endforeach
             </ul>
         </nav>
@@ -85,7 +87,8 @@
 
                         <hr class="dropdown-divider">
 
-                        <a href="{{route('auth.log-out')}}" class="dropdown-item has-text-danger is-flex is-align-items-center">
+                        <a href="{{route('auth.log-out')}}"
+                           class="dropdown-item has-text-danger is-flex is-align-items-center">
                             <span class="icon is-small mr-2">
                                 <span class="icon-logout"></span>
                             </span>
@@ -97,7 +100,8 @@
         </header>
 
         @if(Session::has('message'))
-            <x-general.notification message="{{Session::get('message')}}" type="{{Session::get('message_type') ?? 'is-danger'}}"></x-general.notification>
+            <x-general.notification message="{{Session::get('message')}}"
+                                    type="{{Session::get('message_type') ?? 'is-danger'}}"></x-general.notification>
         @endif
 
         <div id="content" class="@yield('contentClass', 'default')">

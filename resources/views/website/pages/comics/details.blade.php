@@ -65,17 +65,26 @@
                             <div>
                                 <p><span class="sr-only">Precio sin oferta</span> USD ${{$comic->price / 100}}</p>
                                 <p class="ComicPrice">
-                                    USD$ {{($comic->price - ($comic->price*$comic->discount/100))  / 100}}</p>
+                                    USD$ {{($comic->getPrice())}}</p>
                             </div>
                             <p>{{$comic->discount}}% OFF</p>
                         @else
                             <div class="price-only">
-                                <p class="ComicPrice">USD${{$comic->price / 100}}</p>
+                                <p class="ComicPrice">USD${{$comic->getPrice()}}</p>
                             </div>
                         @endif
                     </div>
 
-                    <a href="{{route('shop.add')}}" class="button">Añadir al carro</a>
+                    @if($comic->stock)
+                        <form action="{{route('shop.add')}}">
+                            <input type="hidden" name="product_id" value="{{$comic->id}}">
+                            <button class="button">
+                                Añadir al carro
+                            </button>
+                        </form>
+                    @else
+                        <button class="button" disabled>Sin stock</button>
+                    @endif
                 </div>
             </div>
         </div>

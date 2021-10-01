@@ -30,11 +30,23 @@
             <h1 id="logo">Comic store</h1>
         </div>
 
-        @auth()
-            <a href="{{route('auth.log-out')}}" class="button">Salir</a>
-        @else
-            <a href="{{route('auth.login')}}" class="button">Ingresar</a>
-        @endauth
+        <div>
+            <div class="cart-content">
+                <a href="{{route('shop.cart')}}" class="cart-link">
+                    <span class="icon-shopping-cart"></span>
+                    <span class="sr-only">Carrito de compras</span>
+                    @if(Session::has('cart') && Session::get('cart')->getTotalItems() > 0)
+                        <span class="quantity">{{Session::get('cart')->getTotalItems()}}</span>
+                    @endif
+                </a>
+            </div>
+
+            @auth()
+                <a href="{{route('auth.log-out')}}" class="button">Salir</a>
+            @else
+                <a href="{{route('auth.login')}}" class="button">Ingresar</a>
+            @endauth
+        </div>
     </div>
 
     <nav data-name="website-menu">
@@ -55,12 +67,13 @@
             @foreach(config('arrays.websiteNavLinks') as $link)
                 @if(isset($link['authRequired']))
                     @auth
-                        <li><a href="{{route($link['routeName'])}}">{{$link['text']}}</a></li>
+                        @if(array_key_exists ('can', $link) && Auth::user()->can($link['can']))
+                            <li><a href="{{route($link['routeName'])}}">{{$link['text']}}</a></li>
+                        @endif
                     @endauth
                 @else
                     <li><a href="{{route($link['routeName'])}}">{{$link['text']}}</a></li>
                 @endif
-
             @endforeach
         </ul>
     </nav>
@@ -165,5 +178,6 @@
 </footer>
 
 <script src="{{url('js/main.js')}}"></script>
+@stack('js')
 </body>
 </html>

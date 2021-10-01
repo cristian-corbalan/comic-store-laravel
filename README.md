@@ -45,8 +45,10 @@ DB_PASSWORD=
 php artisan migrate --seed
 ~~~ 
 
-5. Y para finalizar es necesario **recrear el symlink** para el storage. Para esto hay que **ejecutar el siguiente comando** de Artisan
+7. También es necesario **recrear el symlink** para el storage. Para esto hay que **ejecutar el siguiente comando** de Artisan
 
 ~~~ 
 php artisan storage:link
 ~~~ 
+
+8. Para la implementación de mercado pago vamos a crear una nueva variable en el archivo **.env** la cual será MP_ACCESS_TOKEN, aquí es donde ingresaras el token de Mercado Pago
